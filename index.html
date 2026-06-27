@@ -635,6 +635,23 @@ body::before {
 .ms-table .row-past td { color: var(--gray-30); }
 .ms-table .row-past td:first-child { color: var(--gray-30); }
 
+/* ─── Group header rows ─── */
+.ms-group-header td {
+  background: var(--gray-05);
+  font-family: var(--f-en);
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--gray-30);
+  padding: 7px 14px;
+  border-bottom: var(--grid-s) !important;
+  border-right: none !important;
+}
+.ms-group-header + tr td:first-child {
+  border-top: none;
+}
+
 /* ─── Feedback box ─── */
 .feedback-box {
   background: var(--white);
@@ -1006,6 +1023,9 @@ details > summary + * { margin-top: 16px; }
   .ms-table .row-past td:nth-child(2) { color: var(--gray-30); }
   /* 隐藏行保持隐藏 */
   .ms-table tr[style*="display:none"] { display: none !important; }
+  /* 分组标题行在移动端全宽显示 */
+  .ms-table .ms-group-header { display: block; }
+  .ms-table .ms-group-header td { display: block; padding: 7px 12px; }
 
   /* ─── 卡片弹窗在小屏下优化 ─── */
   .card-modal-content,
@@ -1036,9 +1056,12 @@ details > summary + * { margin-top: 16px; }
 
   <!-- ─── HEADER ─── -->
   <header class="page-header">
-    <div class="title-block">
-      <div class="label">Personal Work OS</div>
-      <h1>火猫工作看板 <span>Jun – Jul 2026</span></h1>
+    <div style="display:flex;align-items:center;gap:14px;">
+      <img src="avatar.png" alt="火猫" style="width:44px;height:44px;border-radius:50%;object-fit:cover;flex-shrink:0;border:2px solid var(--gray-10);">
+      <div class="title-block">
+        <div class="label">Personal Work OS</div>
+        <h1>火猫工作看板 <span>Jun – Jul 2026</span></h1>
+      </div>
     </div>
     <div class="date-block">
       <div class="today">TODAY</div>
@@ -1082,14 +1105,14 @@ details > summary + * { margin-top: 16px; }
       </div>
     </div>
 
-    <!-- 卡片 2：作品集 -->
+    <!-- 卡片 2：秋招准备 -->
     <div class="card" data-priority="1" data-card-id="portfolio">
       <div class="card-top">
         <div>
-          <div class="card-title">作品集日常推进</div>
-          <div class="card-meta">微信 · kucion · AI工作流 · 34p</div>
+          <div class="card-title">秋招准备</div>
+          <div class="card-meta">作品集 · 月报 · 转正答辩</div>
         </div>
-        <span class="chip chip-hot">严格执行</span>
+        <span class="chip chip-hot">进行中</span>
       </div>
       <div class="card-hr"></div>
       <div class="card-status">
@@ -1162,7 +1185,7 @@ details > summary + * { margin-top: 16px; }
   </div>
 
   <!-- ─── SECTION 2: 两周日历 ─── -->
-  <div class="sec-label">02 — 两周日程（点击日期查看详情）</div>
+  <div class="sec-label">02 — 两周日程</div>
 
   <!-- 星期表头 -->
   <div class="cal-grid" style="margin-bottom:2px;">
@@ -1304,200 +1327,205 @@ details > summary + * { margin-top: 16px; }
         <th>事项</th>
         <th>交付对象</th>
         <th>内容</th>
-        <th>状态</th>
+        <th></th>
       </tr>
     </thead>
     <tbody>
 
-      <tr>
-        <td>6/27（周六）</td>
+      <!-- ── 进行中 ── -->
+      <tr class="ms-group-header"><td colspan="5">进行中</td></tr>
+      <tr class="row-hot">
+        <td>6/27</td>
         <td>作品集沟通 #1</td>
         <td>陈老师</td>
-        <td>【图文草稿】前 5 页：背景+分类+洞察+目标+方案1 · 检查逻辑方向</td>
+        <td>【图文草稿】前 5 页：背景+分类+洞察+目标+方案一 · 确认逻辑方向</td>
         <td><span class="chip chip-ok">进行中</span></td>
       </tr>
+
+      <!-- ── 即将到期 ── -->
+      <tr class="ms-group-header"><td colspan="5">即将到期</td></tr>
       <tr>
-        <td>6/29（周一）</td>
-        <td>独立站 · 月末汇报 + Phase 1 完成</td>
+        <td>6/29</td>
+        <td>独立站 · Phase 1 月末汇报</td>
         <td>客户</td>
-        <td>内容架构 + UI 设计稿定版 · Phase 1 月末总结</td>
+        <td>内容架构 + UI 设计稿定版 · Phase 1 完成</td>
         <td><span class="chip chip-hot">即将到期</span></td>
       </tr>
+
+      <!-- ── 待开始 ── -->
+      <tr class="ms-group-header"><td colspan="5">待开始</td></tr>
       <tr>
-        <td>6/30（周二）</td>
+        <td>6/30</td>
         <td>作品集沟通 #2</td>
         <td>陈老师</td>
-        <td>【图文草稿全部完成】10 页交付：设计反思完成 · 整体逻辑确认 · 考研课件 Deadline</td>
-        <td><span class="chip chip-ok">待开始</span></td>
+        <td>10 页图文草稿全部完成 · 设计反思完结 · 考研课件 Deadline</td>
+        <td></td>
       </tr>
       <tr>
         <td>7/1</td>
         <td>考研课件 · 课纲给徐哥</td>
         <td>徐哥</td>
         <td>课件制作完成 · 课纲审核通过</td>
-        <td><span class="chip chip-ok">待开始</span></td>
+        <td></td>
       </tr>
       <tr>
-        <td>7/3（周五）</td>
+        <td>7/3</td>
         <td>作品集沟通 #3 · 工作月报</td>
         <td>陈老师 / 内部</td>
-        <td>【视觉定稿进行中】展示前 3 页视觉稿（封面+背景+分类+洞察） · 月报整合完成</td>
-        <td><span class="chip chip-ok">待开始</span></td>
+        <td>展示前 3-4 页视觉稿 · 月报整合完成</td>
+        <td></td>
       </tr>
       <tr>
-        <td>7/4（周六）</td>
+        <td>7/4</td>
         <td>上课</td>
         <td>—</td>
         <td>上午：服务设计课 · 下午：艺术与科技课</td>
-        <td><span class="chip chip-ok">待开始</span></td>
+        <td></td>
       </tr>
       <tr>
-        <td>7/6（周一）</td>
+        <td>7/6</td>
         <td>作品集沟通 #4</td>
         <td>陈老师</td>
-        <td>【视觉定稿进行中】展示前 5 页视觉稿（封面+背景+分类+洞察+设计目标）</td>
-        <td><span class="chip chip-ok">待开始</span></td>
+        <td>展示前 5 页视觉稿（封面+背景+分类+洞察+设计目标）</td>
+        <td></td>
       </tr>
       <tr>
-        <td>7/9（周四）</td>
+        <td>7/9</td>
         <td>作品集沟通 #5</td>
         <td>陈老师</td>
-        <td>【视觉定稿进行中】展示前 8 页视觉稿（+方案一二三四）· 全局风格统一</td>
-        <td><span class="chip chip-ok">待开始</span></td>
+        <td>展示前 8 页视觉稿 · 全局风格统一</td>
+        <td></td>
       </tr>
       <tr>
-        <td>7/12（周日）</td>
+        <td>7/12</td>
         <td>作品集沟通 #6 · 微信项目完结</td>
         <td>陈老师</td>
-        <td>【微信项目完结 ✅】10 页视觉定稿全部完成 · PDF 导出</td>
-        <td><span class="chip chip-ok">待开始</span></td>
+        <td>10 页视觉定稿全部完成 · PDF 导出 ✅</td>
+        <td></td>
       </tr>
       <tr>
-        <td>7/15（周四）</td>
+        <td>7/15</td>
         <td>独立站 · 月中汇报</td>
         <td>客户</td>
         <td>Phase 2 中期进展 · 网站功能制作半程总结</td>
-        <td><span class="chip chip-ok">待开始</span></td>
+        <td></td>
       </tr>
       <tr>
-        <td>7/18（周四）</td>
+        <td>7/18</td>
         <td>作品集沟通 #7</td>
         <td>陈老师</td>
-        <td>【视觉定稿】9 页全部完成 · 视觉阶段完成</td>
-        <td><span class="chip chip-ok">待开始</span></td>
+        <td>kucion 图文草稿 · 前 4 页反馈</td>
+        <td></td>
       </tr>
       <tr>
-        <td>7/21（周日）</td>
+        <td>7/21</td>
         <td>作品集沟通 #8</td>
         <td>陈老师</td>
-        <td>【kucion 项目】开始图文草稿 · 前 4 页反馈</td>
-        <td><span class="chip chip-ok">待开始</span></td>
+        <td>kucion 图文草稿完成 · 进入视觉阶段</td>
+        <td></td>
       </tr>
       <tr>
-        <td>7/24（周三）</td>
+        <td>7/24</td>
         <td>作品集沟通 #9</td>
         <td>陈老师</td>
-        <td>【kucion 项目】10 页图文草稿定稿 · 进入视觉阶段</td>
-        <td><span class="chip chip-ok">待开始</span></td>
+        <td>kucion 视觉定稿进行中</td>
+        <td></td>
       </tr>
       <tr>
-        <td>7/27（周二）</td>
-        <td>作品集沟通 #10</td>
+        <td>7/27</td>
+        <td>作品集沟通 #10 · kucion 完结</td>
         <td>陈老师</td>
-        <td>【kucion 项目】10 页视觉定稿完成</td>
-        <td><span class="chip chip-ok">待开始</span></td>
+        <td>kucion 10 页视觉定稿完成 · PDF 导出 ✅</td>
+        <td></td>
       </tr>
       <tr>
-        <td>7/30（周二）</td>
+        <td>7/30</td>
         <td>作品集沟通 #11 · 考研课件完成</td>
         <td>陈老师 / 机构</td>
-        <td>【AI 工作流】开始图文草稿 · 课件制作完成</td>
-        <td><span class="chip chip-ok">待开始</span></td>
+        <td>AI 工作流图文草稿 · 考研课件 Deadline</td>
+        <td></td>
       </tr>
       <tr>
-        <td>8/2（周四）</td>
+        <td>7/31</td>
+        <td>独立站 · Phase 2 月末汇报</td>
+        <td>客户</td>
+        <td>网站功能制作完成 · 月末总结</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>8/2</td>
         <td>作品集沟通 #12 · 收尾</td>
         <td>陈老师</td>
-        <td>【收尾】其他项目概览 + 封面/目录 + PDF 导出</td>
-        <td><span class="chip chip-ok">待开始</span></td>
+        <td>其他项目概览 + 封面/目录 + PDF 导出</td>
+        <td></td>
       </tr>
       <tr>
-        <td>8/5（周二）</td>
+        <td>8/5</td>
         <td>作品集沟通 #13 · 最终提交</td>
         <td>陈老师</td>
-        <td>【最终】PDF 整合导出 · 1920×1080 · 15M 以内</td>
-        <td><span class="chip chip-ok">待开始</span></td>
-      </tr>
-      <tr style="display:none;">
-        <td>7/24（周三）</td>
-        <td>作品集沟通 #11</td>
-        <td>陈老师</td>
-        <td>第 11 个节点沟通</td>
-        <td><span class="chip chip-ok">待开始</span></td>
+        <td>PDF 整合导出 · 1920×1080 · 15M 以内</td>
+        <td></td>
       </tr>
       <tr>
-        <td>7/31（周三）</td>
-        <td>独立站 · 月末汇报 + Phase 2 完成</td>
-        <td>客户</td>
-        <td>网站功能制作完成 + 月末总结</td>
-        <td><span class="chip chip-ok">待开始</span></td>
+        <td>8/6</td>
+        <td>转正答辩</td>
+        <td>领导 / 导师</td>
+        <td>答辩材料制作 · 与领导沟通 · 发导师查看</td>
+        <td></td>
       </tr>
+
+      <!-- ── 远期 ── -->
+      <tr class="ms-group-header"><td colspan="5">远期</td></tr>
       <tr>
         <td>8/1</td>
         <td>独立站 Phase 3 启动</td>
         <td>客户</td>
         <td>用户体验与优化（8/1–9/30）</td>
-        <td><span class="chip chip-ok">远期</span></td>
+        <td></td>
       </tr>
       <tr>
         <td>8/15</td>
         <td>独立站 · 月中汇报</td>
         <td>客户</td>
-        <td>Phase 3 中期进展 · 用户体验优化半程总结</td>
-        <td><span class="chip chip-ok">远期</span></td>
-      </tr>
-      <tr>
-        <td>8/6</td>
-        <td>转正答辩完成</td>
-        <td>领导 / 导师</td>
-        <td>答辩材料制作 · 至少与领导沟通 1 次 · 发给导师查看</td>
-        <td><span class="chip chip-ok">远期</span></td>
+        <td>Phase 3 中期进展</td>
+        <td></td>
       </tr>
       <tr>
         <td>9/15</td>
         <td>独立站 · 月中汇报</td>
         <td>客户</td>
-        <td>Phase 3 后期进展 · 优化工作最终评估</td>
-        <td><span class="chip chip-ok">远期</span></td>
+        <td>Phase 3 后期进展</td>
+        <td></td>
       </tr>
       <tr>
         <td>9/30</td>
-        <td>独立站 · 月末汇报 + Phase 3 完成</td>
+        <td>独立站 · Phase 3 完成</td>
         <td>客户</td>
-        <td>用户体验与优化完成 + Phase 3 月末总结</td>
-        <td><span class="chip chip-ok">远期</span></td>
+        <td>用户体验优化完成 · Phase 3 月末总结</td>
+        <td></td>
       </tr>
       <tr>
         <td>10/1</td>
         <td>独立站 Phase 4 启动</td>
         <td>客户</td>
         <td>正式交付与容量化（10/1–10/31）</td>
-        <td><span class="chip chip-ok">远期</span></td>
+        <td></td>
       </tr>
       <tr>
         <td>10/15</td>
         <td>独立站 · 月中汇报</td>
         <td>客户</td>
-        <td>Phase 4 中期进展 · 交付准备状态评估</td>
-        <td><span class="chip chip-ok">远期</span></td>
+        <td>Phase 4 中期进展</td>
+        <td></td>
       </tr>
       <tr>
         <td>10/31</td>
-        <td>独立站 · 月末汇报 + 最终交付</td>
+        <td>独立站 · 最终交付</td>
         <td>客户</td>
-        <td>完整项目交付 · Phase 4 完成 · 月末总结</td>
-        <td><span class="chip chip-ok">远期</span></td>
+        <td>完整项目交付 · Phase 4 完成</td>
+        <td></td>
       </tr>
+
     </tbody>
   </table>
   </div>
@@ -1788,9 +1816,9 @@ const cardDetails = {
       </div>`
   },
   portfolio: {
-    title: '作品集日常推进',
-    meta: '微信 · kucion · AI工作流 · 34页',
-    chip: '严格执行', chipCls: 'chip-hot',
+    title: '秋招准备',
+    meta: '作品集 · 月报 · 转正答辩',
+    chip: '进行中', chipCls: 'chip-hot',
     body: `
       <div class="cm-section">
         <div class="cm-section-label">当前阶段</div>
@@ -1812,6 +1840,13 @@ const cardDetails = {
           <div class="cm-node"><span class="cm-node-date">7/6</span><span class="cm-node-text">沟通#4 · 展示前 5 页视觉稿</span></div>
           <div class="cm-node"><span class="cm-node-date">7/9</span><span class="cm-node-text">沟通#5 · 展示前 8 页视觉稿</span></div>
           <div class="cm-node hot"><span class="cm-node-date">7/12</span><span class="cm-node-text">沟通#6 · 10 页全部完成 · PDF 导出 ✅</span></div>
+        </div>
+      </div>
+      <div class="cm-section">
+        <div class="cm-section-label">其他关键节点</div>
+        <div class="cm-nodes">
+          <div class="cm-node"><span class="cm-node-date">7/3</span><span class="cm-node-text">工作月报完成 · 复用作品集内容</span></div>
+          <div class="cm-node"><span class="cm-node-date">8/6</span><span class="cm-node-text">转正答辩 · 素材来自作品集 + 月报</span></div>
         </div>
       </div>
       <div class="cm-section">
@@ -1866,7 +1901,6 @@ const cardDetails = {
         <div class="cm-nodes">
           <div class="cm-node"><span class="cm-node-date">7 月中</span><span class="cm-node-text">Rive 课程看完 · 初步实现黑猫动画</span></div>
           <div class="cm-node"><span class="cm-node-date">7 月</span><span class="cm-node-text">毕设 App 整体架构构思启动</span></div>
-          <div class="cm-node"><span class="cm-node-date">8/6</span><span class="cm-node-text">转正答辩（素材来自作品集 + 月报）</span></div>
         </div>
       </div>
       <div class="cm-section">
