@@ -326,6 +326,102 @@ body::before {
 .dot-gray  { background: var(--gray-30); }
 .dot-white { background: var(--white); border: 1px solid var(--gray-30); }
 
+/* ─── Date Modal ─── */
+.date-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0,0,0,0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  animation: fadeIn 0.2s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.date-modal-content {
+  background: var(--white);
+  border-radius: 8px;
+  width: 90%;
+  max-width: 400px;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+  animation: slideUp 0.3s ease;
+}
+
+@keyframes slideUp {
+  from { transform: translateY(20px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+.date-modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  border-bottom: var(--grid);
+}
+
+.date-modal-title {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+}
+
+.date-modal-date {
+  font-family: var(--f-en);
+  font-size: 28px;
+  font-weight: 900;
+  color: var(--black);
+}
+
+.date-modal-weekday {
+  font-family: var(--f-en);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--gray-50);
+}
+
+.date-modal-close {
+  background: none;
+  border: none;
+  font-size: 28px;
+  color: var(--gray-30);
+  cursor: pointer;
+  padding: 0;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.2s;
+}
+
+.date-modal-close:hover {
+  color: var(--black);
+}
+
+.date-modal-body {
+  padding: 20px;
+  font-size: 13px;
+  color: var(--gray-70);
+  line-height: 1.8;
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.date-modal-body b {
+  color: var(--black);
+}
+
 /* ─── Milestone table ─── */
 .ms-table {
   width: 100%;
@@ -789,79 +885,93 @@ details > summary + * { margin-top: 16px; }
   </div>
 
   <!-- ─── SECTION 2: 两周日历 ─── -->
-  <div class="sec-label">02 — 两周日程</div>
+  <div class="sec-label">02 — 两周日程（点击日期查看详情）</div>
   <div class="week-strip mb32">
     <!-- 第一周：6/23-6/29 -->
-    <div class="day-cell past-cell">
+    <div class="day-cell past-cell" data-date="6/23" data-weekday="Mon" data-detail="✅ 客户会议 1h<br>✅ 拿到产品数据<br>✅ 讨论独立站方案">
       <div class="day-name">Mon</div>
       <div class="day-num">23</div>
       <div class="day-tag">✅ 客户会议 1h · 拿到产品数据</div>
     </div>
-    <div class="day-cell past-cell">
+    <div class="day-cell past-cell" data-date="6/24" data-weekday="Tue" data-detail="✅ 收到陈老师批注<br>✅ 晚间探索技术 3h<br>✅ 原型上线">
       <div class="day-name">Tue</div>
       <div class="day-num">24</div>
       <div class="day-tag">✅ 收到陈老师批注 · 晚间探索技术 3h · 原型上线</div>
     </div>
-    <div class="day-cell past-cell">
+    <div class="day-cell past-cell" data-date="6/25" data-weekday="Wed" data-detail="✅ 技术方案讨论<br>✅ 需求基本完成<br>✅ 下班轻松">
       <div class="day-name">Wed</div>
       <div class="day-num">25</div>
       <div class="day-tag">✅ 技术方案讨论 · 需求基本完成 · 下班轻松</div>
     </div>
-    <div class="day-cell past-cell">
+    <div class="day-cell past-cell" data-date="6/26" data-weekday="Thu" data-detail="✅ 工作日<br>✅ 处理作品集<br>✅ 文字优化+图案">
       <div class="day-name">Thu</div>
       <div class="day-num">26</div>
       <div class="day-tag">✅ 工作日 · 处理作品集 · 文字优化+图案</div>
     </div>
-    <div class="day-cell past-cell">
+    <div class="day-cell past-cell" data-date="6/26" data-weekday="Fri" data-detail="工作日 · 正常上班">
       <div class="day-name">Fri</div>
       <div class="day-num">26</div>
       <div class="day-tag">（工作日）</div>
     </div>
-    <div class="day-cell today-cell">
+    <div class="day-cell today-cell" data-date="6/27" data-weekday="Sat" data-detail="📌 <b>今天 · 周六</b><br><br>📋 作品集沟通 #1<br>━━━━━━━━━━<br>【图文草稿】4 页：<br>· 项目封面<br>· 产品背景<br>· 用户分类<br>· 场景洞察<br><br>🎯 给陈老师看逻辑方向">
       <div class="day-name">Sat</div>
       <div class="day-num">27</div>
       <div class="day-tag">📌 今天 · 作品集图文草稿 · 项目封面+方案1反馈</div>
     </div>
-    <div class="day-cell future-cell">
+    <div class="day-cell future-cell" data-date="6/28" data-weekday="Sun" data-detail="📝 <b>考研课件 Day 1</b><br><br>📋 课件内容梳理<br>━━━━━━━━━━<br>· 课件内容梳理<br>· 大纲细化<br>· 收集素材<br><br>⏱️ 周末白天集中制作">
       <div class="day-name">Sun</div>
       <div class="day-num">28</div>
       <div class="day-tag">📝 考研课件 Day 1 · 课件内容梳理 · 大纲细化</div>
     </div>
     <!-- 第二周：6/30-7/5 -->
-    <div class="day-cell future-cell">
+    <div class="day-cell future-cell" data-date="6/29" data-weekday="Mon" data-detail="📊 <b>独立站 · 月末汇报</b><br>📝 <b>考研课件 Day 2</b><br><br>━━━━━━━━━━<br>【独立站】<br>· 内容架构定版<br>· UI 设计稿定版<br>· Phase 1 月末总结<br><br>【课件】<br>· 主体内容制作<br>· 周末白天继续">
       <div class="day-name">Mon</div>
       <div class="day-num">29</div>
       <div class="day-tag">📊 独立站汇报 · 考研课件 Day 2 · 主体内容制作</div>
     </div>
-    <div class="day-cell future-cell">
+    <div class="day-cell future-cell" data-date="6/30" data-weekday="Tue" data-detail="💬 <b>作品集沟通 #2</b><br>📝 <b>考研课件 Day 3</b><br><br>━━━━━━━━━━<br>【作品集】<br>【图文草稿】7 页：<br>· 背景+分类+洞察+目标<br>· 方案1+方案2+方案3<br>· 检查设计思路<br><br>【课件】<br>· 完善+最终检查<br>· 课件完成 Deadline">
       <div class="day-name">Tue</div>
       <div class="day-num">30</div>
       <div class="day-tag">💬 作品集沟通 #2 · 考研课件 Day 3 · 完善+最终检查</div>
     </div>
-    <div class="day-cell future-cell">
+    <div class="day-cell future-cell" data-date="7/1" data-weekday="Wed" data-detail="✅ <b>考研课件完成</b><br>📋 <b>课纲给徐哥</b><br><br>━━━━━━━━━━<br>【课件】<br>· 课件制作完成<br>· 课纲审核通过<br><br>【7 月开始】<br>· 服务设计课<br>· 艺术与科技课">
       <div class="day-name">Wed</div>
       <div class="day-num">1</div>
       <div class="day-tag">✅ 考研课件完成 · 课纲给徐哥 · 7 月新月开始</div>
     </div>
-    <div class="day-cell future-cell">
+    <div class="day-cell future-cell" data-date="7/2" data-weekday="Thu" data-detail="📝 <b>作品集图文草稿</b><br><br>━━━━━━━━━━<br>【图文草稿】<br>· 方案 3<br>· 方案 4<br>· 设计复盘<br><br>⏱️ 进入初稿准备">
       <div class="day-name">Thu</div>
       <div class="day-num">2</div>
       <div class="day-tag">📝 作品集图文草稿 · 方案 3+方案 4 · 设计复盘</div>
     </div>
-    <div class="day-cell future-cell">
+    <div class="day-cell future-cell" data-date="7/3" data-weekday="Fri" data-detail="💬 <b>作品集沟通 #3</b><br>📋 <b>工作月报</b><br><br>━━━━━━━━━━<br>【作品集】<br>【图文草稿】3-5 页：<br>· 方案3+方案4+复盘<br>· 初稿反馈<br><br>【月报】<br>· 月报整合作品集内容<br>· 7/3 月报完成">
       <div class="day-name">Fri</div>
       <div class="day-num">3</div>
       <div class="day-tag">💬 作品集沟通 #3 · 工作月报 · 初稿 3-5 页反馈</div>
     </div>
-    <div class="day-cell future-cell">
+    <div class="day-cell future-cell" data-date="7/4" data-weekday="Sat" data-detail="📚 <b>课程安排</b><br><br>━━━━━━━━━━<br>【上午】服务设计课<br>【下午】艺术与科技课<br><br>⚠️ 提前下载新网课平台">
       <div class="day-name">Sat</div>
       <div class="day-num">4</div>
       <div class="day-tag">📚 课程安排 · 上午：服务设计课 · 下午：艺术与科技课</div>
     </div>
-    <div class="day-cell future-cell">
+    <div class="day-cell future-cell" data-date="7/5" data-weekday="Sun" data-detail="🏖️ <b>休息日</b><br><br>━━━━━━━━━━<br>【视觉定稿准备】<br>· 收集素材<br>· 确定风格方向<br>· 准备参考图<br><br>📌 不安排强制工作任务">
       <div class="day-name">Sun</div>
       <div class="day-num">5</div>
       <div class="day-tag">🏖️ 休息日 · 视觉定稿准备 · 收集素材</div>
+    </div>
+  </div>
+  
+  <!-- 日期详情弹窗 -->
+  <div id="dateModal" class="date-modal" style="display:none;">
+    <div class="date-modal-content">
+      <div class="date-modal-header">
+        <div class="date-modal-title">
+          <div class="date-modal-date" id="modalDate">6/27</div>
+          <div class="date-modal-weekday" id="modalWeekday">Sat</div>
+        </div>
+        <button class="date-modal-close" onclick="closeDateModal()">&times;</button>
+      </div>
+      <div class="date-modal-body" id="modalDetail"></div>
     </div>
   </div>
 
@@ -1361,6 +1471,47 @@ document.querySelectorAll('.card').forEach(card => {
       bar.style.width = Math.min(100, Math.max(0, parseInt(next))) + '%';
     }
   });
+});
+
+// 日期详情弹窗
+document.querySelectorAll('.day-cell').forEach(cell => {
+  cell.style.cursor = 'pointer';
+  cell.style.transition = 'transform 0.2s';
+  cell.addEventListener('mouseenter', () => {
+    cell.style.transform = 'scale(1.02)';
+  });
+  cell.addEventListener('mouseleave', () => {
+    cell.style.transform = 'scale(1)';
+  });
+  cell.addEventListener('click', (e) => {
+    e.stopPropagation();
+    const modal = document.getElementById('dateModal');
+    document.getElementById('modalDate').textContent = cell.getAttribute('data-date');
+    document.getElementById('modalWeekday').textContent = cell.getAttribute('data-weekday');
+    document.getElementById('modalDetail').innerHTML = cell.getAttribute('data-detail');
+    modal.style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+  });
+});
+
+function closeDateModal() {
+  const modal = document.getElementById('dateModal');
+  modal.style.display = 'none';
+  document.body.style.overflow = 'auto';
+}
+
+document.addEventListener('click', (e) => {
+  const modal = document.getElementById('dateModal');
+  if (e.target === modal) {
+    closeDateModal();
+  }
+});
+
+// ESC 关闭弹窗
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') {
+    closeDateModal();
+  }
 });
 </script>
 </body>
