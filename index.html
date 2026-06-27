@@ -266,6 +266,136 @@ body::before {
 .card[data-priority="2"] { border-top: 2px solid var(--gray-50); }
 .card[data-priority="3"] { border-top: 2px solid var(--gray-15); }
 
+/* ─── Card simplified status line ─── */
+.card {
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+}
+.card-status {
+  font-size: 12px;
+  color: var(--gray-70);
+  margin-bottom: 12px;
+  line-height: 1.6;
+}
+.cs-label {
+  font-family: var(--f-en);
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--gray-30);
+  margin-right: 6px;
+}
+.card-hint {
+  font-family: var(--f-en);
+  font-size: 9px;
+  color: var(--gray-30);
+  letter-spacing: 0.08em;
+}
+
+/* ─── Card Detail Modal ─── */
+.card-modal-content {
+  background: var(--white);
+  border-radius: 8px;
+  width: 92%;
+  max-width: 540px;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+  animation: slideUp 0.3s ease;
+  overflow: hidden;
+}
+.card-modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 20px 20px 16px;
+  border-bottom: var(--grid-s);
+}
+.card-modal-title {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--black);
+  line-height: 1.3;
+  margin-bottom: 3px;
+}
+.card-modal-meta {
+  font-family: var(--f-en);
+  font-size: 11px;
+  color: var(--gray-50);
+  letter-spacing: 0.05em;
+}
+.card-modal-body {
+  max-height: 500px;
+  overflow-y: auto;
+}
+.cm-section {
+  padding: 14px 20px;
+  border-bottom: var(--grid);
+}
+.cm-section:last-child { border-bottom: none; padding-bottom: 20px; }
+.cm-section-label {
+  font-family: var(--f-en);
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--gray-30);
+  margin-bottom: 8px;
+}
+.cm-section-text {
+  font-size: 13px;
+  color: var(--gray-70);
+  line-height: 1.7;
+}
+.cm-nodes {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+.cm-node {
+  display: grid;
+  grid-template-columns: 52px 1fr;
+  gap: 0 12px;
+  align-items: baseline;
+}
+.cm-node-date {
+  font-family: var(--f-en);
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--gray-50);
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+}
+.cm-node-text {
+  font-size: 12px;
+  color: var(--gray-70);
+  line-height: 1.5;
+}
+.cm-node.hot .cm-node-date { color: var(--black); }
+.cm-node.hot .cm-node-text { color: var(--black); font-weight: 600; }
+.cm-node.done .cm-node-date,
+.cm-node.done .cm-node-text { color: var(--gray-30); text-decoration: line-through; text-decoration-color: var(--gray-15); }
+.cm-prog-wrap {
+  height: 3px;
+  background: var(--gray-10);
+  margin-bottom: 6px;
+  border-radius: 2px;
+}
+.cm-prog-fill {
+  height: 100%;
+  background: var(--black);
+  border-radius: 2px;
+}
+.cm-prog-label {
+  font-family: var(--f-en);
+  font-size: 11px;
+  color: var(--gray-50);
+  letter-spacing: 0.06em;
+}
+
 /* ─── Week strip ─── */
 /* ─── Calendar Grid (2 × 7) ─── */
 .cal-grid {
@@ -819,119 +949,103 @@ details > summary + * { margin-top: 16px; }
   <div class="sec-label">01 — 当前事项总览</div>
   <div class="cards mb32">
 
-    <div class="card" data-priority="1">
+    <!-- 卡片 1：独立站外包方案 -->
+    <div class="card" data-priority="1" data-card-id="standalone">
       <div class="card-top">
         <div>
           <div class="card-title">独立站外包方案</div>
-          <div class="card-meta">海外电商 · 完整 4 阶段交付 · 10月底完成</div>
+          <div class="card-meta">海外电商 · 4 阶段 · 10月底交付</div>
         </div>
-        <span class="chip chip-hot">Phase 1 进行中</span>
+        <span class="chip chip-hot">Phase 1</span>
       </div>
       <div class="card-hr"></div>
-      <div class="card-body">
-        <strong>当前阶段（Phase 1 · MVP）：</strong><br>
-        📅 6/18–6/30 · 完成内容架构和 UI 设计稿<br>
-        📅 6/29 前 · 设计稿定版<br>
-        <br>
-        <strong>后续阶段：</strong><br>
-        Phase 2 (7/1–7/31) · 网站功能制作<br>
-        Phase 3 (8/1–9/30) · 用户体验与优化<br>
-        Phase 4 (10/1–10/31) · 正式交付与容量化
+      <div class="card-status">
+        <span class="cs-label">NOW</span>内容架构 + UI 设计稿
       </div>
-      <div class="prog-wrap"><div class="prog-fill" style="width: 35%"></div></div>
+      <div class="prog-wrap"><div class="prog-fill" style="width:35%"></div></div>
       <div class="card-footer mt8">
-        <span>Phase 1 设计稿</span>
+        <span>Phase 1 设计稿定版</span>
         <span class="card-deadline">6 / 29</span>
       </div>
     </div>
 
-    <div class="card" data-priority="2">
+    <!-- 卡片 2：作品集 -->
+    <div class="card" data-priority="1" data-card-id="portfolio">
       <div class="card-top">
         <div>
           <div class="card-title">作品集日常推进</div>
-          <div class="card-meta">微信·kucion·AI工作流 · 34页</div>
+          <div class="card-meta">微信 · kucion · AI工作流 · 34p</div>
         </div>
         <span class="chip chip-hot">严格执行</span>
       </div>
       <div class="card-hr"></div>
-      <div class="card-body">
-        <strong>当前阶段：</strong><br>
-        微信项目图案阶段 (6/26-7/13)<br>
-        <br>
-        <strong>核心流程：</strong><br>
-        草稿 → 初稿 · 每 3 天一次陈老师沟通<br>
-        <br>
-        <strong>后续：</strong><br>
-        kucion (7/14–7/27) → AI工作流 (7/28–8/1) → 收尾 (8/2–8/5)
+      <div class="card-status">
+        <span class="cs-label">NOW</span>微信图文草稿 · 5/10页已完成
       </div>
-      <div class="prog-wrap"><div class="prog-fill" style="width: 5%"></div></div>
+      <div class="prog-wrap"><div class="prog-fill" style="width:15%"></div></div>
       <div class="card-footer mt8">
-        <span>已完成文字</span>
-        <span class="card-deadline">图案进行中</span>
+        <span>沟通#2 · 10页图文全完成</span>
+        <span class="card-deadline">6 / 30</span>
       </div>
     </div>
 
-    <div class="card" data-priority="3">
+    <!-- 卡片 3：考研培训 -->
+    <div class="card" data-priority="2" data-card-id="kaoyan">
       <div class="card-top">
         <div>
           <div class="card-title">考研培训</div>
-          <div class="card-meta">徐哥课程安排 · 制作课件</div>
+          <div class="card-meta">徐哥课程 · 课件制作</div>
         </div>
         <span class="chip chip-ok">近期</span>
       </div>
       <div class="card-hr"></div>
-      <div class="card-body">
-        <strong>7/1 前：</strong><br>
-        大纲交给徐哥<br>
-        <br>
-        <strong>7/4 课程安排：</strong><br>
-        上午：服务设计课<br>
-        下午：艺术与科技课<br>
-        提前下载新网课平台<br>
-        <br>
-        <strong>6/28–6/30 周末制作：</strong><br>
-        3 天集中梳理课件内容<br>
-        周末白天优先，避免工作日压力
+      <div class="card-status">
+        <span class="cs-label">NOW</span>6/28–30 集中制作课件
       </div>
-      <div class="prog-wrap"><div class="prog-fill" style="width: 0%"></div></div>
+      <div class="prog-wrap"><div class="prog-fill" style="width:0%"></div></div>
       <div class="card-footer mt8">
-        <span>大纲给徐哥</span>
+        <span>课纲交给徐哥</span>
         <span class="card-deadline">7 / 1</span>
       </div>
     </div>
 
-    <div class="card" data-priority="2">
+    <!-- 卡片 4：毕设 -->
+    <div class="card" data-priority="3" data-card-id="thesis">
       <div class="card-top">
         <div>
-          <div class="card-title">毕设·自我记录 APP</div>
+          <div class="card-title">毕设 · 自我记录 APP</div>
           <div class="card-meta">技术积累 · Rive 动画实验</div>
         </div>
         <span class="chip chip-ok">后置</span>
       </div>
       <div class="card-hr"></div>
-      <div class="card-body">
-        <strong>近期重点：</strong><br>
-        完成前置事项（作品集、独立站）<br>
-        <br>
-        <strong>Rive 课程学习：</strong><br>
-        7 月中旬前看完课程<br>
-        建立基本动画认知<br>
-        <br>
-        <strong>酒馆 APP 动效：</strong><br>
-        初步实现黑猫动画<br>
-        <br>
-        <strong>毕设 APP 构思（7 月）：</strong><br>
-        整体架构与视觉同步思考<br>
-        设计参考调研<br>
-        风格要求：与众不同且简明
+      <div class="card-status">
+        <span class="cs-label">WAIT</span>前置事项完成后启动
       </div>
-      <div class="prog-wrap"><div class="prog-fill" style="width: 0%"></div></div>
+      <div class="prog-wrap"><div class="prog-fill" style="width:0%"></div></div>
       <div class="card-footer mt8">
-        <span>Rive 学习</span>
+        <span>Rive 课程学习</span>
         <span class="card-deadline">7 月中旬</span>
       </div>
     </div>
 
+  </div>
+
+  <!-- 卡片详情弹窗 -->
+  <div id="cardModal" class="date-modal" style="display:none;">
+    <div class="card-modal-content">
+      <div class="card-modal-header">
+        <div>
+          <div class="card-modal-title" id="cmTitle"></div>
+          <div class="card-modal-meta" id="cmMeta"></div>
+        </div>
+        <div style="display:flex;align-items:center;gap:10px;flex-shrink:0;margin-left:16px;">
+          <span class="chip" id="cmChip"></span>
+          <button class="date-modal-close" onclick="closeCardModal()">&times;</button>
+        </div>
+      </div>
+      <div class="card-modal-body" id="cmBody"></div>
+    </div>
   </div>
 
   <!-- ─── SECTION 2: 两周日历 ─── -->
@@ -1530,17 +1644,152 @@ const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov
 document.getElementById('js-today').textContent =
   months[d.getMonth()] + ' ' + String(d.getDate()).padStart(2,'0');
 
-// 进度条交互：点击卡片可以更新进度
-document.querySelectorAll('.card').forEach(card => {
-  card.style.cursor = 'pointer';
-  card.title = '点击更新进度';
+// ─── 卡片详情数据 ───
+const cardDetails = {
+  standalone: {
+    title: '独立站外包方案',
+    meta: '海外电商 · 完整 4 阶段交付',
+    chip: 'Phase 1 进行中', chipCls: 'chip-hot',
+    body: `
+      <div class="cm-section">
+        <div class="cm-section-label">当前阶段</div>
+        <div class="cm-section-text">Phase 1 · MVP（6/18–6/30）<br>完成内容架构 + UI 设计稿定版</div>
+      </div>
+      <div class="cm-section">
+        <div class="cm-section-label">关键节点</div>
+        <div class="cm-nodes">
+          <div class="cm-node hot"><span class="cm-node-date">6/29</span><span class="cm-node-text">设计稿定版 · Phase 1 月末汇报</span></div>
+          <div class="cm-node"><span class="cm-node-date">7/31</span><span class="cm-node-text">Phase 2 · 网站功能完成</span></div>
+          <div class="cm-node"><span class="cm-node-date">9/30</span><span class="cm-node-text">Phase 3 · 用户体验优化完成</span></div>
+          <div class="cm-node"><span class="cm-node-date">10/31</span><span class="cm-node-text">Phase 4 · 正式交付</span></div>
+        </div>
+      </div>
+      <div class="cm-section">
+        <div class="cm-section-label">进度</div>
+        <div class="cm-prog-wrap"><div class="cm-prog-fill" style="width:35%"></div></div>
+        <div class="cm-prog-label">35% · Phase 1 进行中</div>
+      </div>
+      <div class="cm-section">
+        <div class="cm-section-label">下一步</div>
+        <div class="cm-section-text">6/29 前完成设计稿定版，准备月末汇报</div>
+      </div>`
+  },
+  portfolio: {
+    title: '作品集日常推进',
+    meta: '微信 · kucion · AI工作流 · 34页',
+    chip: '严格执行', chipCls: 'chip-hot',
+    body: `
+      <div class="cm-section">
+        <div class="cm-section-label">当前阶段</div>
+        <div class="cm-section-text">微信项目（6/27–7/12）图文草稿 → 视觉定稿<br>目标：第 6 次沟通（7/12）完整交付</div>
+      </div>
+      <div class="cm-section">
+        <div class="cm-section-label">图文草稿（截止 6/30）</div>
+        <div class="cm-nodes">
+          <div class="cm-node done"><span class="cm-node-date">✅ 完成</span><span class="cm-node-text">产品背景 · 用户分类 · 场景洞察 · 设计目标 · 方案一</span></div>
+          <div class="cm-node hot"><span class="cm-node-date">6/28</span><span class="cm-node-text">方案二 + 方案三（周日上午）</span></div>
+          <div class="cm-node"><span class="cm-node-date">6/29</span><span class="cm-node-text">方案四（晚间）</span></div>
+          <div class="cm-node hot"><span class="cm-node-date">6/30</span><span class="cm-node-text">设计反思 · 沟通#2 · 10 页图文全部完成 ✅</span></div>
+        </div>
+      </div>
+      <div class="cm-section">
+        <div class="cm-section-label">视觉定稿（7/1–7/12）</div>
+        <div class="cm-nodes">
+          <div class="cm-node"><span class="cm-node-date">7/3</span><span class="cm-node-text">沟通#3 · 展示前 3-4 页视觉稿 + 月报</span></div>
+          <div class="cm-node"><span class="cm-node-date">7/6</span><span class="cm-node-text">沟通#4 · 展示前 5 页视觉稿</span></div>
+          <div class="cm-node"><span class="cm-node-date">7/9</span><span class="cm-node-text">沟通#5 · 展示前 8 页视觉稿</span></div>
+          <div class="cm-node hot"><span class="cm-node-date">7/12</span><span class="cm-node-text">沟通#6 · 10 页全部完成 · PDF 导出 ✅</span></div>
+        </div>
+      </div>
+      <div class="cm-section">
+        <div class="cm-section-label">进度</div>
+        <div class="cm-prog-wrap"><div class="cm-prog-fill" style="width:15%"></div></div>
+        <div class="cm-prog-label">15% · 图文草稿 5/10 页完成</div>
+      </div>
+      <div class="cm-section">
+        <div class="cm-section-label">下一步</div>
+        <div class="cm-section-text">6/28（周日）方案二 + 方案三图文草稿（上午 4–5h）</div>
+      </div>`
+  },
+  kaoyan: {
+    title: '考研培训',
+    meta: '徐哥课程安排 · 课件制作',
+    chip: '近期', chipCls: 'chip-ok',
+    body: `
+      <div class="cm-section">
+        <div class="cm-section-label">当前阶段</div>
+        <div class="cm-section-text">6/28–6/30 周末集中制作课件<br>周末白天优先，避免工作日压力</div>
+      </div>
+      <div class="cm-section">
+        <div class="cm-section-label">关键节点</div>
+        <div class="cm-nodes">
+          <div class="cm-node hot"><span class="cm-node-date">6/28–30</span><span class="cm-node-text">课件内容梳理 + 制作（周末白天）</span></div>
+          <div class="cm-node hot"><span class="cm-node-date">6/30</span><span class="cm-node-text">课件完成 Deadline</span></div>
+          <div class="cm-node hot"><span class="cm-node-date">7/1</span><span class="cm-node-text">课纲交给徐哥</span></div>
+          <div class="cm-node"><span class="cm-node-date">7/4</span><span class="cm-node-text">上课 · 服务设计课 + 艺术与科技课</span></div>
+        </div>
+      </div>
+      <div class="cm-section">
+        <div class="cm-section-label">进度</div>
+        <div class="cm-prog-wrap"><div class="cm-prog-fill" style="width:0%"></div></div>
+        <div class="cm-prog-label">0% · 待开始</div>
+      </div>
+      <div class="cm-section">
+        <div class="cm-section-label">下一步</div>
+        <div class="cm-section-text">6/28 开始梳理课件内容框架（与作品集并行进行）</div>
+      </div>`
+  },
+  thesis: {
+    title: '毕设 · 自我记录 APP',
+    meta: '技术积累 · Rive 动画实验',
+    chip: '后置', chipCls: 'chip-ok',
+    body: `
+      <div class="cm-section">
+        <div class="cm-section-label">定位</div>
+        <div class="cm-section-text">前置事项完成后启动（作品集 + 独立站优先）<br>路径：Rive 动效练手 → 调酒 App → 毕设 App</div>
+      </div>
+      <div class="cm-section">
+        <div class="cm-section-label">关键节点</div>
+        <div class="cm-nodes">
+          <div class="cm-node"><span class="cm-node-date">7 月中</span><span class="cm-node-text">Rive 课程看完 · 初步实现黑猫动画</span></div>
+          <div class="cm-node"><span class="cm-node-date">7 月</span><span class="cm-node-text">毕设 App 整体架构构思启动</span></div>
+          <div class="cm-node"><span class="cm-node-date">8/6</span><span class="cm-node-text">转正答辩（素材来自作品集 + 月报）</span></div>
+        </div>
+      </div>
+      <div class="cm-section">
+        <div class="cm-section-label">进度</div>
+        <div class="cm-prog-wrap"><div class="cm-prog-fill" style="width:0%"></div></div>
+        <div class="cm-prog-label">0% · 等待前置事项完成</div>
+      </div>
+      <div class="cm-section">
+        <div class="cm-section-label">下一步</div>
+        <div class="cm-section-text">暂不执行，等 7 月中旬作品集告一段落后启动 Rive 学习</div>
+      </div>`
+  }
+};
+
+// ─── 卡片详情弹窗 ───
+function openCardModal(cardId) {
+  const d = cardDetails[cardId];
+  if (!d) return;
+  document.getElementById('cmTitle').textContent = d.title;
+  document.getElementById('cmMeta').textContent = d.meta;
+  const chip = document.getElementById('cmChip');
+  chip.textContent = d.chip;
+  chip.className = 'chip ' + d.chipCls;
+  document.getElementById('cmBody').innerHTML = d.body;
+  document.getElementById('cardModal').style.display = 'flex';
+  document.body.style.overflow = 'hidden';
+}
+function closeCardModal() {
+  document.getElementById('cardModal').style.display = 'none';
+  document.body.style.overflow = 'auto';
+}
+
+// 卡片点击 → 打开详情
+document.querySelectorAll('.card[data-card-id]').forEach(card => {
   card.addEventListener('click', () => {
-    const bar = card.querySelector('.prog-fill');
-    const current = parseInt(bar.style.width) || 0;
-    const next = prompt(`更新进度（当前 ${current}%），输入新进度（0-100）：`, current);
-    if (next !== null && !isNaN(next)) {
-      bar.style.width = Math.min(100, Math.max(0, parseInt(next))) + '%';
-    }
+    openCardModal(card.getAttribute('data-card-id'));
   });
 });
 
@@ -1572,16 +1821,17 @@ function closeDateModal() {
 }
 
 document.addEventListener('click', (e) => {
-  const modal = document.getElementById('dateModal');
-  if (e.target === modal) {
-    closeDateModal();
-  }
+  const dateModal = document.getElementById('dateModal');
+  if (e.target === dateModal) closeDateModal();
+  const cardModal = document.getElementById('cardModal');
+  if (e.target === cardModal) closeCardModal();
 });
 
 // ESC 关闭弹窗
 document.addEventListener('keydown', (e) => {
   if (e.key === 'Escape') {
     closeDateModal();
+    closeCardModal();
   }
 });
 </script>
