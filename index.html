@@ -267,6 +267,28 @@ body::before {
 .card[data-priority="3"] { border-top: 2px solid var(--gray-15); }
 
 /* ─── Week strip ─── */
+/* ─── Calendar Grid (2 × 7) ─── */
+.cal-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 2px;
+  margin-bottom: 32px;
+}
+.wh-cell {
+  font-family: var(--f-en);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--gray-50);
+  padding: 7px 10px;
+  text-align: center;
+  background: var(--gray-05);
+  border: var(--grid);
+}
+.wh-cell.wh-weekend { color: var(--gray-70); background: #ececec; }
+
+/* keep .week-strip for legacy */
 .week-strip {
   display: grid;
   grid-template-columns: repeat(14, 1fr);
@@ -349,8 +371,8 @@ body::before {
 .date-modal-content {
   background: var(--white);
   border-radius: 8px;
-  width: 90%;
-  max-width: 400px;
+  width: 92%;
+  max-width: 480px;
   box-shadow: 0 20px 60px rgba(0,0,0,0.3);
   animation: slideUp 0.3s ease;
 }
@@ -410,17 +432,34 @@ body::before {
 }
 
 .date-modal-body {
-  padding: 20px;
+  padding: 20px 24px 24px;
   font-size: 13px;
   color: var(--gray-70);
-  line-height: 1.8;
-  max-height: 400px;
+  line-height: 1.9;
+  max-height: 440px;
   overflow-y: auto;
 }
-
-.date-modal-body b {
-  color: var(--black);
+.date-modal-body b { color: var(--black); }
+.date-modal-body .dm-section {
+  margin-top: 14px;
+  padding-top: 12px;
+  border-top: var(--grid);
 }
+.date-modal-body .dm-tag {
+  display: inline-block;
+  font-family: var(--f-en);
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  background: var(--gray-10);
+  color: var(--gray-70);
+  padding: 2px 7px;
+  margin-bottom: 8px;
+  border-radius: 2px;
+}
+.date-modal-body .dm-tag.hot { background: var(--black); color: var(--white); }
+.date-modal-body .dm-tag.done { background: var(--gray-05); color: var(--gray-30); }
 
 /* ─── Milestone table ─── */
 .ms-table {
@@ -648,8 +687,19 @@ details > summary + * { margin-top: 16px; }
     padding-bottom: 8px;
     gap: 2px;
   }
+  /* cal-grid 在移动端收缩处理 */
+  .cal-grid {
+    grid-template-columns: repeat(7, minmax(70px, 1fr));
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  .wh-cell {
+    min-width: 70px;
+    font-size: 9px;
+    padding: 6px 4px;
+  }
   .day-cell {
-    min-width: 80px;
+    min-width: 70px;
     min-height: 80px;
     padding: 8px;
   }
@@ -886,74 +936,121 @@ details > summary + * { margin-top: 16px; }
 
   <!-- ─── SECTION 2: 两周日历 ─── -->
   <div class="sec-label">02 — 两周日程（点击日期查看详情）</div>
-  <div class="week-strip mb32">
-    <!-- 第一周：6/23-6/29 -->
-    <div class="day-cell past-cell" data-date="6/23" data-weekday="Mon" data-detail="✅ 客户会议 1h<br>✅ 拿到产品数据<br>✅ 讨论独立站方案">
-      <div class="day-name">Mon</div>
+
+  <!-- 星期表头 -->
+  <div class="cal-grid" style="margin-bottom:2px;">
+    <div class="wh-cell">MON</div>
+    <div class="wh-cell">TUE</div>
+    <div class="wh-cell">WED</div>
+    <div class="wh-cell">THU</div>
+    <div class="wh-cell">FRI</div>
+    <div class="wh-cell wh-weekend">SAT</div>
+    <div class="wh-cell wh-weekend">SUN</div>
+  </div>
+
+  <!-- 日期格（两周，7×2） -->
+  <div class="cal-grid mb32">
+
+    <!-- ── 第一周：6/22–6/28 ── -->
+    <div class="day-cell past-cell" data-date="6/22" data-weekday="Mon"
+      data-detail="<span class='dm-tag done'>已完成</span><br>✅ 正常工作日<br>无特殊记录">
+      <div class="day-name">Jun</div>
+      <div class="day-num">22</div>
+      <div class="day-tag">✅ 工作日</div>
+    </div>
+
+    <div class="day-cell past-cell" data-date="6/23" data-weekday="Tue"
+      data-detail="<span class='dm-tag done'>已完成</span><br>✅ <b>客户会议 1h</b><br><br>· 拿到独立站产品数据<br>· 讨论方案方向<br>· 会议顺利完成">
+      <div class="day-name">Jun</div>
       <div class="day-num">23</div>
       <div class="day-tag">✅ 客户会议 1h · 拿到产品数据</div>
     </div>
-    <div class="day-cell past-cell" data-date="6/24" data-weekday="Tue" data-detail="✅ 收到陈老师批注<br>✅ 晚间探索技术 3h<br>✅ 原型上线">
-      <div class="day-name">Tue</div>
+
+    <div class="day-cell past-cell" data-date="6/24" data-weekday="Wed"
+      data-detail="<span class='dm-tag done'>已完成</span><br>✅ <b>收到陈老师批注</b><br><br>· 晚间技术架构探索 3h<br>· 从零到上线（凌晨 3 点）<br>· 效率极高但不可持续">
+      <div class="day-name">Jun</div>
       <div class="day-num">24</div>
-      <div class="day-tag">✅ 收到陈老师批注 · 晚间探索技术 3h · 原型上线</div>
+      <div class="day-tag">✅ 陈老师批注 · 技术探索 3h · 上线</div>
     </div>
-    <div class="day-cell past-cell" data-date="6/25" data-weekday="Wed" data-detail="✅ 技术方案讨论<br>✅ 需求基本完成<br>✅ 下班轻松">
-      <div class="day-name">Wed</div>
+
+    <div class="day-cell past-cell" data-date="6/25" data-weekday="Thu"
+      data-detail="<span class='dm-tag done'>已完成</span><br>✅ <b>技术方案确认</b><br><br>· 与刘浩老师确认独立站方向<br>· 微信需求基本完成<br>· 下班轻松">
+      <div class="day-name">Jun</div>
       <div class="day-num">25</div>
-      <div class="day-tag">✅ 技术方案讨论 · 需求基本完成 · 下班轻松</div>
+      <div class="day-tag">✅ 技术方案确认 · 需求完成</div>
     </div>
-    <div class="day-cell past-cell" data-date="6/26" data-weekday="Fri" data-detail="✅ 工作日<br>✅ 处理作品集<br>✅ 文字优化+图案">
-      <div class="day-name">Fri</div>
+
+    <div class="day-cell past-cell" data-date="6/26" data-weekday="Fri"
+      data-detail="<span class='dm-tag done'>已完成</span><br>✅ <b>作品集批注处理</b><br><br>· 处理陈老师批注内容<br>· 文字优化 + 图文草稿推进<br>· 作品集进度良好">
+      <div class="day-name">Jun</div>
       <div class="day-num">26</div>
-      <div class="day-tag">✅ 工作日 · 处理作品集 · 文字优化+图案</div>
+      <div class="day-tag">✅ 作品集批注处理 · 文字优化</div>
     </div>
-    <div class="day-cell today-cell" data-date="6/27" data-weekday="Sat" data-detail="📌 <b>今天 · 周六</b><br><br>📋 作品集沟通 #1<br>━━━━━━━━━━<br>【图文草稿】4 页：<br>· 项目封面<br>· 产品背景<br>· 用户分类<br>· 场景洞察<br><br>🎯 给陈老师看逻辑方向">
+
+    <div class="day-cell today-cell" data-date="6/27" data-weekday="Sat"
+      data-detail="<span class='dm-tag hot'>今天</span><br>📌 <b>周六冲刺</b><br><div class='dm-section'><span class='dm-tag'>作品集沟通 #1</span><br>展示 5 页图文草稿给陈老师：<br>· 产品背景 · 用户分类<br>· 场景洞察 · 设计目标 · 方案一<br><br>🎯 确认逻辑方向</div>">
       <div class="day-name">Sat</div>
       <div class="day-num">27</div>
-      <div class="day-tag">📌 今天 · 作品集图文草稿 · 项目封面+方案1反馈</div>
+      <div class="day-tag">📌 今天 · 沟通#1 · 5页图文草稿</div>
     </div>
-    <div class="day-cell future-cell" data-date="6/28" data-weekday="Sun" data-detail="📝 <b>考研课件 Day 1</b><br><br>📋 课件内容梳理<br>━━━━━━━━━━<br>· 课件内容梳理<br>· 大纲细化<br>· 收集素材<br><br>⏱️ 周末白天集中制作">
+
+    <div class="day-cell future-cell weekend-cell" data-date="6/28" data-weekday="Sun"
+      data-detail="<span class='dm-tag'>周日冲刺</span><br>🎨 <b>图文草稿剩余</b><div class='dm-section'><span class='dm-tag'>作品集</span><br>· 方案二（图文草稿）<br>· 方案三（图文草稿）<br>⏱️ 上午 4–5h</div><div class='dm-section'><span class='dm-tag'>考研课件</span><br>· Day 1：课件内容梳理<br>· 大纲细化 + 收集素材</div>">
       <div class="day-name">Sun</div>
       <div class="day-num">28</div>
-      <div class="day-tag">📝 考研课件 Day 1 · 课件内容梳理 · 大纲细化</div>
+      <div class="day-tag">🎨 方案二三图文 · 课件Day1</div>
     </div>
-    <!-- 第二周：6/30-7/5 -->
-    <div class="day-cell future-cell" data-date="6/29" data-weekday="Mon" data-detail="📊 <b>独立站 · 月末汇报</b><br>📝 <b>考研课件 Day 2</b><br><br>━━━━━━━━━━<br>【独立站】<br>· 内容架构定版<br>· UI 设计稿定版<br>· Phase 1 月末总结<br><br>【课件】<br>· 主体内容制作<br>· 周末白天继续">
+
+    <!-- ── 第二周：6/29–7/5 ── -->
+    <div class="day-cell future-cell" data-date="6/29" data-weekday="Mon"
+      data-detail="<span class='dm-tag'>工作日</span><div class='dm-section'><span class='dm-tag'>独立站</span><br>📊 Phase 1 月末汇报<br>· 内容架构定版<br>· UI 设计稿定版</div><div class='dm-section'><span class='dm-tag'>作品集</span><br>· 方案四（图文草稿）<br>⏱️ 晚间 2h（白天汇报后）</div><div class='dm-section'><span class='dm-tag'>考研课件</span><br>· Day 2：主体内容制作</div>">
       <div class="day-name">Mon</div>
       <div class="day-num">29</div>
-      <div class="day-tag">📊 独立站汇报 · 考研课件 Day 2 · 主体内容制作</div>
+      <div class="day-tag">📊 独立站汇报 · 方案四图文 · 课件Day2</div>
     </div>
-    <div class="day-cell future-cell" data-date="6/30" data-weekday="Tue" data-detail="💬 <b>作品集沟通 #2</b><br>📝 <b>考研课件 Day 3</b><br><br>━━━━━━━━━━<br>【作品集】<br>【图文草稿】7 页：<br>· 背景+分类+洞察+目标<br>· 方案1+方案2+方案3<br>· 检查设计思路<br><br>【课件】<br>· 完善+最终检查<br>· 课件完成 Deadline">
+
+    <div class="day-cell future-cell" data-date="6/30" data-weekday="Tue"
+      data-detail="<span class='dm-tag hot'>沟通节点 #2</span><div class='dm-section'><span class='dm-tag'>作品集</span><br>💬 沟通前完成：<br>· 设计反思（图文草稿）<br>→ <b>10 页图文草稿全部完成 ✅</b><br>🎯 提交给陈老师整体逻辑</div><div class='dm-section'><span class='dm-tag'>考研课件</span><br>· Day 3：完善+最终检查<br>· 课件 Deadline</div>">
       <div class="day-name">Tue</div>
       <div class="day-num">30</div>
-      <div class="day-tag">💬 作品集沟通 #2 · 考研课件 Day 3 · 完善+最终检查</div>
+      <div class="day-tag">💬 沟通#2 · 图文草稿全完成 · 课件Deadline</div>
     </div>
-    <div class="day-cell future-cell" data-date="7/1" data-weekday="Wed" data-detail="✅ <b>考研课件完成</b><br>📋 <b>课纲给徐哥</b><br><br>━━━━━━━━━━<br>【课件】<br>· 课件制作完成<br>· 课纲审核通过<br><br>【7 月开始】<br>· 服务设计课<br>· 艺术与科技课">
-      <div class="day-name">Wed</div>
+
+    <div class="day-cell future-cell" data-date="7/1" data-weekday="Wed"
+      data-detail="<div class='dm-section'><span class='dm-tag'>考研</span><br>📋 课纲给徐哥</div><div class='dm-section'><span class='dm-tag'>作品集 · 视觉开始</span><br>🎨 项目封面 视觉定稿<br>· 确定整体视觉风格方向<br>· 收集参考素材<br>⏱️ 晚 3h</div>">
+      <div class="day-name">Jul</div>
       <div class="day-num">1</div>
-      <div class="day-tag">✅ 考研课件完成 · 课纲给徐哥 · 7 月新月开始</div>
+      <div class="day-tag">📋 课纲给徐哥 · 视觉开始 · 封面视觉</div>
     </div>
-    <div class="day-cell future-cell" data-date="7/2" data-weekday="Thu" data-detail="📝 <b>作品集图文草稿</b><br><br>━━━━━━━━━━<br>【图文草稿】<br>· 方案 3<br>· 方案 4<br>· 设计复盘<br><br>⏱️ 进入初稿准备">
-      <div class="day-name">Thu</div>
+
+    <div class="day-cell future-cell" data-date="7/2" data-weekday="Thu"
+      data-detail="<span class='dm-tag'>视觉定稿 Day 2</span><div class='dm-section'><span class='dm-tag'>作品集</span><br>🎨 产品背景 视觉定稿<br>· 图文结合优化<br>· 背景页视觉框架搭建<br>⏱️ 晚 3h</div>">
+      <div class="day-name">Jul</div>
       <div class="day-num">2</div>
-      <div class="day-tag">📝 作品集图文草稿 · 方案 3+方案 4 · 设计复盘</div>
+      <div class="day-tag">🎨 视觉定稿 · 产品背景</div>
     </div>
-    <div class="day-cell future-cell" data-date="7/3" data-weekday="Fri" data-detail="💬 <b>作品集沟通 #3</b><br>📋 <b>工作月报</b><br><br>━━━━━━━━━━<br>【作品集】<br>【图文草稿】3-5 页：<br>· 方案3+方案4+复盘<br>· 初稿反馈<br><br>【月报】<br>· 月报整合作品集内容<br>· 7/3 月报完成">
-      <div class="day-name">Fri</div>
+
+    <div class="day-cell future-cell" data-date="7/3" data-weekday="Fri"
+      data-detail="<span class='dm-tag hot'>沟通节点 #3 · 月报</span><div class='dm-section'><span class='dm-tag'>作品集</span><br>🎨 用户分类 + 场景洞察 视觉（轻量）<br>⏱️ 晚 1.5h<br>🎯 展示前 3 页视觉稿</div><div class='dm-section'><span class='dm-tag'>月报</span><br>📋 整合作品集内容<br>· 7/3 月报完成</div>">
+      <div class="day-name">Jul</div>
       <div class="day-num">3</div>
-      <div class="day-tag">💬 作品集沟通 #3 · 工作月报 · 初稿 3-5 页反馈</div>
+      <div class="day-tag">💬 沟通#3 · 月报 · 分类+洞察视觉</div>
     </div>
-    <div class="day-cell future-cell" data-date="7/4" data-weekday="Sat" data-detail="📚 <b>课程安排</b><br><br>━━━━━━━━━━<br>【上午】服务设计课<br>【下午】艺术与科技课<br><br>⚠️ 提前下载新网课平台">
+
+    <div class="day-cell future-cell weekend-cell" data-date="7/4" data-weekday="Sat"
+      data-detail="<span class='dm-tag'>上课日</span><br>📚 <b>全天课程</b><div class='dm-section'>【上午】服务设计课<br>【下午】艺术与科技课<br><br>⚠️ 提前下载新网课平台<br>📌 作品集不排任务</div>">
       <div class="day-name">Sat</div>
       <div class="day-num">4</div>
-      <div class="day-tag">📚 课程安排 · 上午：服务设计课 · 下午：艺术与科技课</div>
+      <div class="day-tag">📚 上课 · 服务设计+艺术与科技</div>
     </div>
-    <div class="day-cell future-cell" data-date="7/5" data-weekday="Sun" data-detail="🏖️ <b>休息日</b><br><br>━━━━━━━━━━<br>【视觉定稿准备】<br>· 收集素材<br>· 确定风格方向<br>· 准备参考图<br><br>📌 不安排强制工作任务">
+
+    <div class="day-cell future-cell weekend-cell" data-date="7/5" data-weekday="Sun"
+      data-detail="<span class='dm-tag'>周日大冲刺</span><br>🎨 <b>视觉定稿</b>（补 7/4 空缺）<div class='dm-section'><span class='dm-tag'>作品集</span><br>· 设计目标 视觉定稿<br>· 方案一 视觉定稿<br>⏱️ 上午 5–6h<br>🎯 完成后已有 5 页视觉稿</div>">
       <div class="day-name">Sun</div>
       <div class="day-num">5</div>
-      <div class="day-tag">🏖️ 休息日 · 视觉定稿准备 · 收集素材</div>
+      <div class="day-tag">🎨 视觉冲刺 · 设计目标+方案一（5-6h）</div>
     </div>
+
   </div>
   
   <!-- 日期详情弹窗 -->
@@ -1003,7 +1100,7 @@ details > summary + * { margin-top: 16px; }
         <td>6/30（周二）</td>
         <td>作品集沟通 #2</td>
         <td>陈老师</td>
-        <td>【图文草稿】前 8 页：背景+分类+洞察+目标+方案1+封面+方案2+方案3 · 检查设计思路</td>
+        <td>【图文草稿全部完成】10 页交付：设计反思完成 · 整体逻辑确认 · 考研课件 Deadline</td>
         <td><span class="chip chip-ok">待开始</span></td>
       </tr>
       <tr>
@@ -1014,38 +1111,38 @@ details > summary + * { margin-top: 16px; }
         <td><span class="chip chip-ok">待开始</span></td>
       </tr>
       <tr>
-        <td>7/3（周三）</td>
+        <td>7/3（周五）</td>
         <td>作品集沟通 #3 · 工作月报</td>
         <td>陈老师 / 内部</td>
-        <td>【图文草稿】8-11 页：方案2+3+4+复盘 · 月报整合作品集内容</td>
+        <td>【视觉定稿进行中】展示前 3 页视觉稿（封面+背景+分类+洞察） · 月报整合完成</td>
         <td><span class="chip chip-ok">待开始</span></td>
       </tr>
       <tr>
-        <td>7/4（周四）</td>
-        <td>课程安排</td>
-        <td>学生</td>
-        <td>上午：服务设计课 · 下午：艺术与科技课 · 提前下载新网课平台</td>
+        <td>7/4（周六）</td>
+        <td>上课</td>
+        <td>—</td>
+        <td>上午：服务设计课 · 下午：艺术与科技课</td>
         <td><span class="chip chip-ok">待开始</span></td>
       </tr>
       <tr>
-        <td>7/6（周六）</td>
+        <td>7/6（周一）</td>
         <td>作品集沟通 #4</td>
         <td>陈老师</td>
-        <td>【图文草稿】11 页全部定稿 · 图文阶段完成</td>
+        <td>【视觉定稿进行中】展示前 5 页视觉稿（封面+背景+分类+洞察+设计目标）</td>
         <td><span class="chip chip-ok">待开始</span></td>
       </tr>
       <tr>
-        <td>7/9（周二）</td>
+        <td>7/9（周四）</td>
         <td>作品集沟通 #5</td>
         <td>陈老师</td>
-        <td>【视觉定稿】开始视觉打磨 · 方案1-2 视觉反馈</td>
+        <td>【视觉定稿进行中】展示前 8 页视觉稿（+方案一二三四）· 全局风格统一</td>
         <td><span class="chip chip-ok">待开始</span></td>
       </tr>
       <tr>
-        <td>7/12（周五）</td>
-        <td>作品集沟通 #6</td>
+        <td>7/12（周日）</td>
+        <td>作品集沟通 #6 · 微信项目完结</td>
         <td>陈老师</td>
-        <td>【视觉定稿】方案3-4 视觉反馈 · 整体风格确认</td>
+        <td>【微信项目完结 ✅】10 页视觉定稿全部完成 · PDF 导出</td>
         <td><span class="chip chip-ok">待开始</span></td>
       </tr>
       <tr>
@@ -1102,45 +1199,6 @@ details > summary + * { margin-top: 16px; }
         <td>作品集沟通 #13 · 最终提交</td>
         <td>陈老师</td>
         <td>【最终】PDF 整合导出 · 1920×1080 · 15M 以内</td>
-        <td><span class="chip chip-ok">待开始</span></td>
-      </tr>
-        <td>陈老师</td>
-        <td>完成《其他项目概览》作品集包装 · 提交 2-3 页至微信群</td>
-        <td><span class="chip chip-ok">待开始</span></td>
-      </tr>
-      <tr>
-        <td>8/5（周二）</td>
-        <td>作品集最终完成 · 封面+目录+PDF</td>
-        <td>陈老师</td>
-        <td>完成《封面、工作经历、目录、结尾》(4p) · 最终 PDF 整合导出 · 规范命名、1920×1080、15M 以内</td>
-        <td><span class="chip chip-ok">待开始</span></td>
-      </tr>
-      <tr style="display:none;">
-        <td>7/12（周五）</td>
-        <td>作品集沟通 #7</td>
-        <td>陈老师</td>
-        <td>第 7 个节点沟通</td>
-        <td><span class="chip chip-ok">待开始</span></td>
-      </tr>
-      <tr style="display:none;">
-        <td>7/15（周一）</td>
-        <td>作品集沟通 #8</td>
-        <td>陈老师</td>
-        <td>第 8 个节点沟通</td>
-        <td><span class="chip chip-ok">待开始</span></td>
-      </tr>
-      <tr style="display:none;">
-        <td>7/18（周四）</td>
-        <td>作品集沟通 #9</td>
-        <td>陈老师</td>
-        <td>第 9 个节点沟通</td>
-        <td><span class="chip chip-ok">待开始</span></td>
-      </tr>
-      <tr style="display:none;">
-        <td>7/21（周日）</td>
-        <td>作品集沟通 #10</td>
-        <td>陈老师</td>
-        <td>第 10 个节点沟通</td>
         <td><span class="chip chip-ok">待开始</span></td>
       </tr>
       <tr style="display:none;">
@@ -1430,57 +1488,36 @@ details > summary + * { margin-top: 16px; }
     <li class="risk-item">
       <div class="risk-bar high"></div>
       <div class="risk-text">
-        <div class="risk-name">工作日晚间时间管理 · 信息接收黑洞</div>
-        <div class="risk-plan">下班回家后（20:30–21:30）容易进入刷屏状态（B 站等），时间消耗无感知。<br>缓冲：研究设置缓冲机制；识别真正的疲惫类型；理解 APP 吸引力源头。</div>
+        <div class="risk-name">工作日晚间有效时间短</div>
+        <div class="risk-plan">到家 20:30，有效工作窗口约 2h，易被刷屏消耗。缓冲：以「完成 1 页」为日目标，状态差时推次日，但不跨沟通节点。</div>
       </div>
     </li>
     <li class="risk-item">
       <div class="risk-bar high"></div>
       <div class="risk-text">
-        <div class="risk-name">高脑力任务启动难度 · 精力分配问题</div>
-        <div class="risk-plan">作品集类的高度依赖个人思考+动手的任务，启动节点难度很大。下班回来容易精疲力竭，必须体力充分恢复才能启动。<br>缓冲：需要找到保证每天规律推进的机制；观察最优启动时间段和条件。</div>
+        <div class="risk-name">6/28–7/1 三线并行压力</div>
+        <div class="risk-plan">作品集图文尾页 + 考研课件 + 独立站汇报同期。缓冲：课件 6/30 Deadline 优先，独立站 6/29 汇报固定，作品集按节点不超出即可。</div>
       </div>
     </li>
     <li class="risk-item">
       <div class="risk-bar mid"></div>
       <div class="risk-text">
-        <div class="risk-name">熬夜效率与规律的矛盾</div>
-        <div class="risk-plan">6/24 晚间探索技术做到凌晨 3 点，3 小时出成果很高效；但熬夜到凌晨不可持续。<br>缓冲：规划时更早启动，避免熬夜；理解什么样的任务才能高效完成而无需长夜。</div>
-      </div>
-    </li>
-    <li class="risk-item">
-      <div class="risk-bar mid"></div>
-      <div class="risk-text">
-        <div class="risk-name">作品集每 3 天节奏在工作日难以维持</div>
-        <div class="risk-plan">工作日下班后约 2 小时，每 3 天实质产出有压力。<br>缓冲：以"一页"为最小单元，工作日出一页就达标；周六冲刺补差距。</div>
-      </div>
-    </li>
-    <li class="risk-item">
-      <div class="risk-bar mid"></div>
-      <div class="risk-text">
-        <div class="risk-name">月报 7/3 可能被其他事项挤压</div>
-        <div class="risk-plan">月报与作品集内容高度重合。<br>缓冲：每周作品集产出时顺手归档月报素材，7/3 只需整合。</div>
+        <div class="risk-name">7/4 上课占用周末</div>
+        <div class="risk-plan">服务设计+艺术与科技全天课，视觉定稿被压缩。缓冲：7/5 周日集中冲刺，做 2 页补回来。</div>
       </div>
     </li>
     <li class="risk-item">
       <div class="risk-bar low"></div>
       <div class="risk-text">
-        <div class="risk-name">考研课件 7/1 课纲容易遗忘</div>
-        <div class="risk-plan">7/1 要先给徐哥课纲，6/28–30 制作，时间紧凑。<br>缓冲：提前准备课纲框架，周末集中制作。</div>
-      </div>
-    </li>
-    <li class="risk-item">
-      <div class="risk-bar low"></div>
-      <div class="risk-text">
-        <div class="risk-name">视觉定稿时间紧张</div>
-        <div class="risk-plan">7/4-7/6 有课程安排，视觉定稿时间被压缩。<br>缓冲：利用 7/5 休息日准备素材，7/6-7/13 集中视觉打磨。</div>
+        <div class="risk-name">月报 7/3 被挤压</div>
+        <div class="risk-plan">7/3 同日有沟通节点+月报。缓冲：作品集产出时顺手归档月报素材，7/3 只需整合，预计 1h 内完成。</div>
       </div>
     </li>
   </ul>
 
   <!-- ─── FOOTER ─── -->
   <footer class="page-footer">
-    <div class="f-left">HOTCAT WORK OS · v1.4 · 2026.06.26</div>
+    <div class="f-left">HOTCAT WORK OS · v1.5 · 2026.06.27</div>
     <div class="f-right">每日反馈 → AI 重新预测 → 节点更新</div>
   </footer>
 
