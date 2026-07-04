@@ -1198,181 +1198,9 @@ details > summary + * { margin-top: 16px; }
     <div class="wh-cell wh-weekend">SUN</div>
   </div>
 
-  <!-- 日期格（两周，7×2） -->
-  <div class="cal-grid mb32">
+  <!-- 日期格（JS 自动渲染两周） -->
+  <div class="cal-grid mb32" id="calGrid"></div>
 
-    <!-- ── 第一周：6/22–6/28 ── -->
-    <div class="day-cell past-cell" data-date="6/22" data-weekday="Mon"
-      data-detail="<span class='dm-tag done'>已完成</span><br>✅ 正常工作日<br>无特殊记录">
-      <div class="day-name">Jun</div>
-      <div class="day-num">22</div>
-      <div class="day-tag">✅ 工作日</div>
-    </div>
-
-    <div class="day-cell past-cell" data-date="6/23" data-weekday="Tue"
-      data-detail="<span class='dm-tag done'>已完成</span><br>✅ <b>客户会议 1h</b><br><br>· 拿到独立站产品数据<br>· 讨论方案方向<br>· 会议顺利完成">
-      <div class="day-name">Jun</div>
-      <div class="day-num">23</div>
-      <div class="day-tag">✅ 客户会议 1h · 拿到产品数据</div>
-    </div>
-
-    <div class="day-cell past-cell" data-date="6/24" data-weekday="Wed"
-      data-detail="<span class='dm-tag done'>已完成</span><br>✅ <b>收到陈老师批注</b><br><br>· 晚间技术架构探索 3h<br>· 从零到上线（凌晨 3 点）<br>· 效率极高但不可持续">
-      <div class="day-name">Jun</div>
-      <div class="day-num">24</div>
-      <div class="day-tag">✅ 陈老师批注 · 技术探索 3h · 上线</div>
-    </div>
-
-    <div class="day-cell past-cell" data-date="6/25" data-weekday="Thu"
-      data-detail="<span class='dm-tag done'>已完成</span><br>✅ <b>技术方案确认</b><br><br>· 与刘浩老师确认独立站方向<br>· 微信需求基本完成<br>· 下班轻松">
-      <div class="day-name">Jun</div>
-      <div class="day-num">25</div>
-      <div class="day-tag">✅ 技术方案确认 · 需求完成</div>
-    </div>
-
-    <div class="day-cell past-cell" data-date="6/26" data-weekday="Fri"
-      data-detail="<span class='dm-tag done'>已完成</span><br>✅ <b>作品集批注处理</b><br><br>· 处理陈老师批注内容<br>· 文字优化 + 图文草稿推进<br>· 作品集进度良好">
-      <div class="day-name">Jun</div>
-      <div class="day-num">26</div>
-      <div class="day-tag">✅ 作品集批注处理 · 文字优化</div>
-    </div>
-
-    <div class="day-cell past-cell" data-date="6/27" data-weekday="Sat"
-      data-detail="<span class='dm-tag done'>已完成</span><br>✅ <b>作品集沟通 #1</b><br><br>· 设计目标 · 方案一 · 场景分析 — 共完成 3 页<br>· 约 5 小时（含切换其他工作）<br>· 陈老师反馈：提出较大修改意见<br>· 晚 6 点后打游戏休息到凌晨 12 点">
-      <div class="day-name">Sat</div>
-      <div class="day-num">27</div>
-      <div class="day-tag">✅ 沟通#1完成 · 3页 · 陈老师有大改</div>
-    </div>
-
-    <div class="day-cell past-cell" data-date="6/28" data-weekday="Sun"
-      data-detail="<span class='dm-tag done'>已完成</span><br>🔧 <b>服务设计课件 Day 1</b><br><br>· 下午 6 点改作品集逻辑+修正页面<br>· 上服务设计课（弄了很久）<br>· PPT 需要重做（无飞哥码版）<br>· 凌晨 3 点半还在做课件<br>· 只完成了一点点内容">
-      <div class="day-name">Sun</div>
-      <div class="day-num">28</div>
-      <div class="day-tag">✅ 服务设计课件Day1 · 熬夜到凌晨3:30</div>
-    </div>
-
-    <!-- ── 第二周：6/29–7/5 ── -->
-    <div class="day-cell past-cell" data-date="6/29" data-weekday="Mon"
-      data-detail="<span class='dm-tag done'>已完成</span><br>📅 <b>6/29 周一</b><div class='dm-section'><span class='dm-tag'>独立站原型</span><br>✅ 从梳理架构到搭出落地原型<br>· 晚上 11 点做到凌晨 3:30<br>· 4 个多小时完成<br>· AI 效率很高，结构弄清楚了</div>">
-      <div class="day-name">Mon</div>
-      <div class="day-num">29</div>
-      <div class="day-tag">✅ 独立站原型完成 · 熬夜到凌晨3:30</div>
-    </div>
-
-    <div class="day-cell past-cell" data-date="6/30" data-weekday="Tue"
-      data-detail="<span class='dm-tag done'>已完成</span><br>📅 <b>6/30 周二</b><div class='dm-section'><span class='dm-tag'>午休</span><br>💤 中午补觉（熬夜后精力不足）</div><div class='dm-section'><span class='dm-tag'>考研课件</span><br>📝 继续做课件<br>· 推迟到 7/2 完成</div>">
-      <div class="day-name">Tue</div>
-      <div class="day-num">30</div>
-      <div class="day-tag">✅ 补觉 · 课件继续</div>
-    </div>
-
-    <div class="day-cell past-cell" data-date="7/1" data-weekday="Wed"
-      data-detail="<span class='dm-tag done'>已完成</span><br>📅 <b>7/1 周三</b><div class='dm-section'><span class='dm-tag'>独立站</span><br>📞 晚上 7 点沟通完成<br>· 老板和刘老师反馈<br>· 新增：技术页面 + 社区页面</div><div class='dm-section'><span class='dm-tag'>考研课件</span><br>📝 继续做<br>· 课件已完成 ✅</div>">
-      <div class="day-name">Jul</div>
-      <div class="day-num">1</div>
-      <div class="day-tag">✅ 独立站沟通 · 新增两页 · 课件完成</div>
-    </div>
-
-    <div class="day-cell past-cell" data-date="7/2" data-weekday="Thu"
-      data-detail="<span class='dm-tag done'>已完成</span><br>📅 <b>7/2 周四</b><div class='dm-section'><span class='dm-tag'>考研课件</span><br>✅ 课件完成 · 交给徐哥</div><div class='dm-section'><span class='dm-tag'>效率</span><br>💭 一直在做 PPT<br>· 已有内容也做了很久<br>· 效率存疑</div>">
-      <div class="day-name">Jul</div>
-      <div class="day-num">2</div>
-      <div class="day-tag">✅ 考研课件 Deadline · PPT 制作</div>
-    </div>
-
-    <div class="day-cell past-cell" data-date="7/3" data-weekday="Fri"
-      data-detail="<span class='dm-tag done'>已完成</span><br>📅 <b>7/3 周五</b><div class='dm-section'><span class='dm-tag'>上班</span><br>· 休息为主<br>· 看了设计相关文章<br>· 精力恢复不错</div><div class='dm-section'><span class='dm-tag'>服务设计课</span><br>✅ 第一节课完成</div>">
-      <div class="day-name">Jul</div>
-      <div class="day-num">3</div>
-      <div class="day-tag">✅ 服务设计第一课 · 休息调整</div>
-    </div>
-
-    <div class="day-cell today-cell" data-date="7/4" data-weekday="Sat"
-      data-detail="<span class='dm-tag hot'>今天</span><br>📚 <b>上课日</b><div class='dm-section'>【上午 2 点】服务设计课（第二课）<br>【晚上 7 点】艺术与科技课<br><br>⚠️ 提前下载新网课平台<br>📌 作品集/月报不排任务</div>">
-      <div class="day-name">Sat</div>
-      <div class="day-num">4</div>
-      <div class="day-tag">今天 · 服务设计+艺术与科技</div>
-    </div>
-
-    <div class="day-cell future-cell weekend-cell" data-date="7/5" data-weekday="Sun"
-      data-detail="<span class='dm-tag hot'>月报+周会</span><br>📋 <b>月报补完</b><div class='dm-section'><span class='dm-tag'>月报</span><br>✅ 优先补完月报<br>· 原 7/3 截止已过<br>· 用已有内容快速完成<br>⏱️ 上午 2-3h</div><div class='dm-section'><span class='dm-tag'>周会准备</span><br>· 整理 AI 探索小东西<br>· 思考展示内容<br>· 7/7 周会展示用<br>⏱️ 下午 2-3h</div>">
-      <div class="day-name">Sun</div>
-      <div class="day-num">5</div>
-      <div class="day-tag">月报补完 · 周会 AI 展示准备</div>
-    </div>
-
-    <div class="day-cell future-cell" data-date="7/6" data-weekday="Mon"
-      data-detail="<span class='dm-tag hot'>沟通#4 · 周会</span><br>📅 <b>7/6 周一</b><div class='dm-section'><span class='dm-tag'>作品集</span><br>💬 沟通 #4 · 展示前 5 页<br>· 封面+背景+分类+洞察+设计目标<br>⏱️ 晚 1.5h</div><div class='dm-section'><span class='dm-tag'>周会</span><br>· 补充周会展示材料<br>· 确保 7/7 准备好</div>">
-      <div class="day-name">Mon</div>
-      <div class="day-num">6</div>
-      <div class="day-tag">沟通#4 · 周会展示补充</div>
-    </div>
-
-    <div class="day-cell future-cell" data-date="7/7" data-weekday="Tue"
-      data-detail="<span class='dm-tag hot'>周会 AI 展示</span><br>🎤 <b>7/7 周二</b><div class='dm-section'><span class='dm-tag'>周会</span><br>· AI 探索展示<br>· 展示小发明或业务相关内容<br>· 正式开会</div>">
-      <div class="day-name">Tue</div>
-      <div class="day-num">7</div>
-      <div class="day-tag">🎤 周会 AI 展示</div>
-    </div>
-
-    <div class="day-cell future-cell" data-date="7/8" data-weekday="Wed"
-      data-detail="<span class='dm-tag'>独立站原型</span><br>🎨 <b>社区页原型</b><div class='dm-section'><span class='dm-tag'>独立站</span><br>· 社区页原型设计<br>· 补全原型页面<br>⏱️ 晚 2-3h</div>">
-      <div class="day-name">Wed</div>
-      <div class="day-num">8</div>
-      <div class="day-tag">🎨 社区页原型</div>
-    </div>
-
-    <div class="day-cell future-cell" data-date="7/9" data-weekday="Thu"
-      data-detail="<span class='dm-tag'>独立站原型</span><br>💻 <b>技术页原型</b><div class='dm-section'><span class='dm-tag'>独立站</span><br>· 技术页原型设计<br>· 补全原型页面<br>⏱️ 晚 2-3h</div>">
-      <div class="day-name">Thu</div>
-      <div class="day-num">9</div>
-      <div class="day-tag">💻 技术页原型</div>
-    </div>
-
-    <div class="day-cell future-cell weekend-cell" data-date="7/10" data-weekday="Fri"
-      data-detail="<span class='dm-tag'>Figma 设计</span><br>📐 <b>Figma 导入</b><div class='dm-section'><span class='dm-tag'>独立站</span><br>· 导入 Figma<br>· 开始细节设计调整<br>⏱️ 晚 2-3h</div>">
-      <div class="day-name">Fri</div>
-      <div class="day-num">10</div>
-      <div class="day-tag">📐 Figma 导入</div>
-    </div>
-
-    <div class="day-cell future-cell weekend-cell" data-date="7/11" data-weekday="Sat"
-      data-detail="<span class='dm-tag hot'>Figma 设计</span><br>📐 <b>细节设计+规范</b><div class='dm-section'><span class='dm-tag'>独立站</span><br>· 细节设计调整<br>· 设计规范 / 前端规范<br>⏱️ 上午集中 4-5h</div>">
-      <div class="day-name">Sat</div>
-      <div class="day-num">11</div>
-      <div class="day-tag">📐 细节设计+规范</div>
-    </div>
-
-    <div class="day-cell future-cell weekend-cell" data-date="7/12" data-weekday="Sun"
-      data-detail="<span class='dm-tag hot'>汇报准备</span><br>📋 <b>汇报材料</b><div class='dm-section'><span class='dm-tag'>独立站</span><br>· 设计规范完成<br>· 汇报 PPT 准备<br>· 7/15 汇报材料就绪</div>">
-      <div class="day-name">Sun</div>
-      <div class="day-num">12</div>
-      <div class="day-tag">📋 汇报准备</div>
-    </div>
-
-    <div class="day-cell future-cell" data-date="7/13" data-weekday="Mon"
-      data-detail="<span class='dm-tag'>最终调整</span><br>🔍 <b>最终检查</b><div class='dm-section'><span class='dm-tag'>独立站</span><br>· 最终细节调整<br>· 确认汇报材料</div>">
-      <div class="day-name">Mon</div>
-      <div class="day-num">13</div>
-      <div class="day-tag">🔍 最终调整</div>
-    </div>
-
-    <div class="day-cell future-cell" data-date="7/14" data-weekday="Tue"
-      data-detail="<span class='dm-tag hot'>汇报日</span><br>🎤 <b>7/15 汇报准备</b><div class='dm-section'><span class='dm-tag'>独立站</span><br>· 最后确认<br>· 准备 7/15 正式汇报</div>">
-      <div class="day-name">Tue</div>
-      <div class="day-num">14</div>
-      <div class="day-tag">🎤 汇报准备</div>
-    </div>
-
-    <div class="day-cell future-cell" data-date="7/15" data-weekday="Wed"
-      data-detail="<span class='dm-tag hot'>月中汇报</span><br>🎤 <b>独立站月中汇报</b><div class='dm-section'><span class='dm-tag'>独立站</span><br>· Phase 2 中期进展汇报<br>· 网站功能制作半程总结</div>">
-      <div class="day-name">Wed</div>
-      <div class="day-num">15</div>
-      <div class="day-tag">🎤 独立站月中汇报</div>
-    </div>
-
-  </div>
-  
   <!-- 日期详情弹窗 -->
   <div id="dateModal" class="date-modal" style="display:none;">
     <div class="date-modal-content">
@@ -1969,32 +1797,116 @@ function closeCardModal() {
 }
 
 // 卡片点击 → 打开详情
+// ─── 两周日历：数据字典 ───────────────────────────────────────────
+// key 格式：'YYYY-M-D'（不补零）
+const DAY_DATA = {
+  '2026-6-22': { tag: '工作日', detail: "<span class='dm-tag done'>已完成</span><br>正常工作日<br>无特殊记录" },
+  '2026-6-23': { tag: '客户会议 1h', detail: "<span class='dm-tag done'>已完成</span><br><b>客户会议 1h</b><br><br>· 拿到独立站产品数据<br>· 讨论方案方向<br>· 会议顺利完成" },
+  '2026-6-24': { tag: '陈老师批注 · 技术探索 3h', detail: "<span class='dm-tag done'>已完成</span><br><b>收到陈老师批注</b><br><br>· 晚间技术架构探索 3h<br>· 从零到上线（凌晨 3 点）<br>· 效率极高但不可持续" },
+  '2026-6-25': { tag: '技术方案确认 · 需求完成', detail: "<span class='dm-tag done'>已完成</span><br><b>技术方案确认</b><br><br>· 与刘浩老师确认独立站方向<br>· 微信需求基本完成<br>· 下班轻松" },
+  '2026-6-26': { tag: '作品集批注处理 · 文字优化', detail: "<span class='dm-tag done'>已完成</span><br><b>作品集批注处理</b><br><br>· 处理陈老师批注内容<br>· 文字优化 + 图文草稿推进<br>· 作品集进度良好" },
+  '2026-6-27': { tag: '沟通#1完成 · 3页 · 陈老师有大改', detail: "<span class='dm-tag done'>已完成</span><br><b>作品集沟通 #1</b><br><br>· 设计目标 · 方案一 · 场景分析 — 共完成 3 页<br>· 约 5 小时（含切换其他工作）<br>· 陈老师反馈：提出较大修改意见<br>· 晚 6 点后打游戏休息到凌晨 12 点" },
+  '2026-6-28': { tag: '服务设计课件Day1 · 熬夜到凌晨3:30', detail: "<span class='dm-tag done'>已完成</span><br><b>服务设计课件 Day 1</b><br><br>· 下午 6 点改作品集逻辑+修正页面<br>· 上服务设计课（弄了很久）<br>· PPT 需要重做（无飞哥码版）<br>· 凌晨 3 点半还在做课件<br>· 只完成了一点点内容" },
+  '2026-6-29': { tag: '独立站原型完成 · 熬夜到凌晨3:30', detail: "<span class='dm-tag done'>已完成</span><br>📅 <b>6/29 周一</b><div class='dm-section'><span class='dm-tag'>独立站原型</span><br>从梳理架构到搭出落地原型<br>· 晚上 11 点做到凌晨 3:30<br>· 4 个多小时完成<br>· AI 效率很高，结构弄清楚了</div>" },
+  '2026-6-30': { tag: '补觉 · 课件继续', detail: "<span class='dm-tag done'>已完成</span><br>📅 <b>6/30 周二</b><div class='dm-section'><span class='dm-tag'>午休</span><br>中午补觉（熬夜后精力不足）</div><div class='dm-section'><span class='dm-tag'>考研课件</span><br>继续做课件<br>· 推迟到 7/2 完成</div>" },
+  '2026-7-1':  { tag: '独立站沟通 · 新增两页 · 课件完成', detail: "<span class='dm-tag done'>已完成</span><br>📅 <b>7/1 周三</b><div class='dm-section'><span class='dm-tag'>独立站</span><br>晚上 7 点沟通完成<br>· 老板和刘老师反馈<br>· 新增：技术页面 + 社区页面</div><div class='dm-section'><span class='dm-tag'>考研课件</span><br>继续做<br>· 课件已完成</div>" },
+  '2026-7-2':  { tag: '考研课件 Deadline · PPT 制作', detail: "<span class='dm-tag done'>已完成</span><br>📅 <b>7/2 周四</b><div class='dm-section'><span class='dm-tag'>考研课件</span><br>课件完成 · 交给徐哥</div><div class='dm-section'><span class='dm-tag'>效率</span><br>一直在做 PPT<br>· 已有内容也做了很久<br>· 效率存疑</div>" },
+  '2026-7-3':  { tag: '服务设计第一课 · 休息调整', detail: "<span class='dm-tag done'>已完成</span><br>📅 <b>7/3 周五</b><div class='dm-section'><span class='dm-tag'>上班</span><br>· 休息为主<br>· 看了设计相关文章<br>· 精力恢复不错</div><div class='dm-section'><span class='dm-tag'>服务设计课</span><br>第一节课完成</div>" },
+  '2026-7-4':  { tag: '上课日 · 服务设计+艺术与科技', detail: "<span class='dm-tag hot'>今天</span><br><b>上课日</b><div class='dm-section'>【上午 2 点】服务设计课（第二课）<br>【晚上 7 点】艺术与科技课<br><br>作品集/月报不排任务</div>" },
+  '2026-7-5':  { tag: '月报补完 · 周会 AI 展示准备', detail: "<span class='dm-tag hot'>月报+周会</span><br><b>月报补完</b><div class='dm-section'><span class='dm-tag'>月报</span><br>优先补完月报<br>· 原 7/3 截止已过<br>· 用已有内容快速完成<br>上午 2-3h</div><div class='dm-section'><span class='dm-tag'>周会准备</span><br>· 整理 AI 探索小东西<br>· 思考展示内容<br>· 7/7 周会展示用<br>下午 2-3h</div>" },
+  '2026-7-6':  { tag: '沟通#4 · 周会展示补充', detail: "<span class='dm-tag hot'>沟通#4 · 周会</span><br>📅 <b>7/6 周一</b><div class='dm-section'><span class='dm-tag'>作品集</span><br>沟通 #4 · 展示前 5 页<br>· 封面+背景+分类+洞察+设计目标<br>晚 1.5h</div><div class='dm-section'><span class='dm-tag'>周会</span><br>· 补充周会展示材料<br>· 确保 7/7 准备好</div>" },
+  '2026-7-7':  { tag: '周会 AI 展示', detail: "<span class='dm-tag hot'>周会 AI 展示</span><br>📅 <b>7/7 周二</b><div class='dm-section'><span class='dm-tag'>周会</span><br>· AI 探索展示<br>· 展示小发明或业务相关内容<br>· 正式开会</div>" },
+  '2026-7-8':  { tag: '社区页原型', detail: "<span class='dm-tag'>独立站原型</span><br><b>社区页原型</b><div class='dm-section'><span class='dm-tag'>独立站</span><br>· 社区页原型设计<br>· 补全原型页面<br>晚 2-3h</div>" },
+  '2026-7-9':  { tag: '技术页原型', detail: "<span class='dm-tag'>独立站原型</span><br><b>技术页原型</b><div class='dm-section'><span class='dm-tag'>独立站</span><br>· 技术页原型设计<br>· 补全原型页面<br>晚 2-3h</div>" },
+  '2026-7-10': { tag: 'Figma 导入', detail: "<span class='dm-tag'>Figma 设计</span><br><b>Figma 导入</b><div class='dm-section'><span class='dm-tag'>独立站</span><br>· 导入 Figma<br>· 开始细节设计调整<br>晚 2-3h</div>" },
+  '2026-7-11': { tag: '细节设计+规范', detail: "<span class='dm-tag hot'>Figma 设计</span><br><b>细节设计+规范</b><div class='dm-section'><span class='dm-tag'>独立站</span><br>· 细节设计调整<br>· 设计规范 / 前端规范<br>上午集中 4-5h</div>" },
+  '2026-7-12': { tag: '汇报准备', detail: "<span class='dm-tag hot'>汇报准备</span><br><b>汇报材料</b><div class='dm-section'><span class='dm-tag'>独立站</span><br>· 设计规范完成<br>· 汇报 PPT 准备<br>· 7/15 汇报材料就绪</div>" },
+  '2026-7-13': { tag: '最终调整', detail: "<span class='dm-tag'>最终调整</span><br><b>最终检查</b><div class='dm-section'><span class='dm-tag'>独立站</span><br>· 最终细节调整<br>· 确认汇报材料</div>" },
+  '2026-7-14': { tag: '汇报准备', detail: "<span class='dm-tag hot'>汇报日前夕</span><br><b>7/15 汇报准备</b><div class='dm-section'><span class='dm-tag'>独立站</span><br>· 最后确认<br>· 准备 7/15 正式汇报</div>" },
+  '2026-7-15': { tag: '独立站月中汇报', detail: "<span class='dm-tag hot'>月中汇报</span><br><b>独立站月中汇报</b><div class='dm-section'><span class='dm-tag'>独立站</span><br>· Phase 2 中期进展汇报<br>· 网站功能制作半程总结</div>" },
+};
+
+// ─── 两周日历：自动渲染 ───────────────────────────────────────────
+(function renderCalendar() {
+  const MONTH_NAMES = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  const WEEKDAY_NAMES = ['Mon','Tue','Wed','Thu','Fri','Sat','Sun'];
+
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+
+  // 找本周一（ISO 周：周一为第一天）
+  const dow = today.getDay(); // 0=Sun,1=Mon,...,6=Sat
+  const diffToMonday = (dow === 0) ? -6 : 1 - dow;
+  const thisMonday = new Date(today);
+  thisMonday.setDate(today.getDate() + diffToMonday);
+
+  const grid = document.getElementById('calGrid');
+  if (!grid) return;
+  grid.innerHTML = '';
+
+  // 渲染 14 天（本周一 ~ 下周日）
+  for (let i = 0; i < 14; i++) {
+    const d = new Date(thisMonday);
+    d.setDate(thisMonday.getDate() + i);
+
+    const key = `${d.getFullYear()}-${d.getMonth()+1}-${d.getDate()}`;
+    const isToday   = d.getTime() === today.getTime();
+    const isPast    = d.getTime() < today.getTime();
+    const isWeekend = (d.getDay() === 6 || d.getDay() === 0);
+
+    const data = DAY_DATA[key] || {};
+    const tag  = data.tag    || '';
+    const detail = data.detail || '';
+
+    // 决定单元格样式
+    let cls = 'day-cell';
+    if (isToday)        cls += ' today-cell';
+    else if (isPast)    cls += ' past-cell';
+    else if (isWeekend) cls += ' weekend-cell';
+    else                cls += ' future-cell';
+
+    const monthStr = MONTH_NAMES[d.getMonth()];
+    const wdStr    = WEEKDAY_NAMES[isWeekend ? (d.getDay() === 6 ? 5 : 6) : d.getDay() - 1];
+    const dateStr  = `${d.getMonth()+1}/${d.getDate()}`;
+
+    const cell = document.createElement('div');
+    cell.className = cls;
+    cell.setAttribute('data-date', dateStr);
+    cell.setAttribute('data-weekday', wdStr);
+    cell.setAttribute('data-detail', detail);
+    cell.innerHTML = `
+      <div class="day-name">${monthStr}</div>
+      <div class="day-num">${d.getDate()}</div>
+      <div class="day-tag">${isToday ? '今天 · ' : ''}${tag}</div>
+    `;
+
+    // 点击弹窗
+    if (detail) {
+      cell.style.cursor = 'pointer';
+      cell.style.transition = 'transform 0.2s';
+      cell.addEventListener('mouseenter', () => { cell.style.transform = 'scale(1.02)'; });
+      cell.addEventListener('mouseleave', () => { cell.style.transform = 'scale(1)'; });
+      cell.addEventListener('click', (e) => {
+        e.stopPropagation();
+        document.getElementById('modalDate').textContent = dateStr;
+        document.getElementById('modalWeekday').textContent = wdStr;
+        document.getElementById('modalDetail').innerHTML = detail;
+        document.getElementById('dateModal').style.display = 'flex';
+        document.body.style.overflow = 'hidden';
+      });
+    }
+
+    grid.appendChild(cell);
+  }
+})();
+
 document.querySelectorAll('.card[data-card-id]').forEach(card => {
   card.addEventListener('click', () => {
     openCardModal(card.getAttribute('data-card-id'));
   });
 });
 
-// 日期详情弹窗
-document.querySelectorAll('.day-cell').forEach(cell => {
-  cell.style.cursor = 'pointer';
-  cell.style.transition = 'transform 0.2s';
-  cell.addEventListener('mouseenter', () => {
-    cell.style.transform = 'scale(1.02)';
-  });
-  cell.addEventListener('mouseleave', () => {
-    cell.style.transform = 'scale(1)';
-  });
-  cell.addEventListener('click', (e) => {
-    e.stopPropagation();
-    const modal = document.getElementById('dateModal');
-    document.getElementById('modalDate').textContent = cell.getAttribute('data-date');
-    document.getElementById('modalWeekday').textContent = cell.getAttribute('data-weekday');
-    document.getElementById('modalDetail').innerHTML = cell.getAttribute('data-detail');
-    modal.style.display = 'flex';
-    document.body.style.overflow = 'hidden';
-  });
-});
+// 日期详情弹窗（calGrid 已在渲染时绑定，这里不重复处理）
 
 function closeDateModal() {
   const modal = document.getElementById('dateModal');
