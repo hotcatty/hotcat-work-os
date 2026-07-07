@@ -1072,13 +1072,13 @@ details > summary + * { margin-top: 16px; }
   <!-- ─── TODAY BANNER ─── -->
   <div style="background:var(--black);padding:16px 20px;margin-bottom:32px;display:flex;justify-content:space-between;align-items:center;">
     <div>
-      <div style="font-family:var(--f-en);font-size:10px;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-bottom:4px;">TODAY'S FOCUS · 7/4 周六</div>
+      <div style="font-family:var(--f-en);font-size:10px;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-bottom:4px;">TODAY'S FOCUS · 7/8 周三</div>
       <div style="font-size:13px;font-weight:700;color:var(--white);line-height:1.6;">
-        今天：上课日<br>
-        <span style="font-weight:400;color:rgba(255,255,255,0.6);font-size:12px;">上午：服务设计第二课 · 晚上：艺术与科技 · 课件已完成 · 月报待补</span>
+        今天：月报硬 Deadline · 晚上必成<br>
+        <span style="font-weight:400;color:rgba(255,255,255,0.6);font-size:12px;">需要在晚上完成月报，不能再拖了 · 这是硬 Deadline</span>
       </div>
     </div>
-    <div style="font-family:var(--f-en);font-size:32px;font-weight:900;color:rgba(255,255,255,0.15);letter-spacing:-0.04em;">7/4</div>
+    <div style="font-family:var(--f-en);font-size:32px;font-weight:900;color:rgba(255,255,255,0.15);letter-spacing:-0.04em;">7/8</div>
   </div>
 
   <!-- ─── SECTION 1: 事项总览 ─── -->
@@ -1233,7 +1233,7 @@ details > summary + * { margin-top: 16px; }
       <!-- ── 今天 ── -->
       <tr class="ms-group-header"><td colspan="5">今天 · 7/4</td></tr>
       <tr>
-        <td>7/4</td>
+        <td>7/8</td>
         <td>上课日</td>
         <td>—</td>
         <td>上午 2 点：服务设计第二课 · 晚上 7 点：艺术与科技课</td>
@@ -1624,24 +1624,23 @@ details > summary + * { margin-top: 16px; }
     <li class="risk-item">
       <div class="risk-bar high"></div>
       <div class="risk-text">
-        <div class="risk-name">游戏成瘾 · 晚间时间虚耗</div>
-        <div class="risk-plan">7/5 打了一整天游戏，7/6 晚上又打一整晚。已经持续两天，习惯很容易形成。缓冲：强制约束 — 禁止单排！晚间必须做有价值的工作。建议：(1) 设定严格的"禁游时间"（20:30–23:00 留给工作）(2) 找朋友监督 (3) 如果要玩，只玩需要团队配合的模式，避免沉溺单排。</div>
+        <div class="risk-name">月报 7/8 晚硬 Deadline · 不能再拖</div>
+        <div class="risk-plan">原计划 7/3 完成，已过期 5 天。5 号、6 号被游戏虚耗了。缓冲：7/8 晚 8 点到 12 点，强制集中完成月报。下班继续做，今晚必成！这是最后的机会。</div>
+      </div>
+    </li>
+    <li class="risk-item">
+      <div class="risk-bar high"></div>
+      <div class="risk-text">
+        <div class="risk-name">游戏戒断 · 一个月彻底戒掉</div>
+        <div class="risk-plan">5-6 号连续两天被游戏虚耗。问题：千万别单排！上瘾太快。缓冲：(1) 周末 10-12 号绝对不打游戏 (2) 一个月完全戒掉游戏，不碰 (3) 如果要玩，只玩团队配合模式，避免沉溺单排。</div>
       </div>
     </li>
     <li class="risk-item">
       <div class="risk-bar mid"></div>
       <div class="risk-text">
-        <div class="risk-name">作品集进度落后 · 一周无更新</div>
-        <div class="risk-plan">6/27–7/4 一周几乎没有更新，被游戏虚耗了。沟通#4 应该在 7/6，现在已经推迟。缓冲：立即停止游戏，今天 7/7 周会后集中补进度。</div>
-      </div>
-    </li>
     <li class="risk-item">
       <div class="risk-bar mid"></div>
       <div class="risk-text">
-        <div class="risk-name">月报 7/3 截止已过 · 仍未完成</div>
-        <div class="risk-plan">原计划 7/3 完成，现已过期 4 天。7/5 计划补完但被游戏打乱。缓冲：今天或明天必须补完，不能再拖。</div>
-      </div>
-    </li>
     <li class="risk-item">
       <div class="risk-bar low"></div>
       <div class="risk-text">
@@ -1816,14 +1815,14 @@ const DAY_DATA = {
   '2026-7-5':  { tag: '休息日 · 打了一天游戏', detail: "<span class='dm-tag done'>已完成</span><br><b>游戏整天</b><div class='dm-section'><span class='dm-tag warn'>上瘾警告：打了一整天游戏</span><br>· 课后太累，想补精力<br>· 原计划：月报 + 周会准备<br>· 实际：全天游戏<br><br>⚠️ 没有完成：<br>· 月报仍未补完（原 7/3 截止已过）<br>· 周会 AI 展示准备完全没启动<br><br>✓ 反思：计划被破坏，需要强制约束</div>" },
   '2026-7-6':  { tag: '工作+游戏 · 晚上打了一整晚游戏', detail: "<span class='dm-tag done'>已完成</span><br><b>工作日 + 玩耍</b><div class='dm-section'><span class='dm-tag ok'>✓ 上班</span><br>正常工作，没有问题</div><div class='dm-section'><span class='dm-tag warn'>⚠️ 晚上打游戏</span><br>· 本来计划：作品集沟通 #4<br>· 实际：晚上打了一整晚游戏<br>· 没有做实质性工作<br><br>深刻反思：<br>· 千万别单排！真的上瘾了<br>· 昨天 5 号全天，今天又晚上<br>· 这不能继续了<br>· 必须立刻改变这个习惯<br>· 晚间要做有价值的工作，不是虚耗</div>" },
   '2026-7-7':  { tag: '今天 · 周会 AI 展示', detail: "<span class='dm-tag hot'>今天 · 周二周会</span><br><b>周会 AI 展示</b><div class='dm-section'><span class='dm-tag'>周会</span><br>· AI 探索展示<br>· 展示内容还在准备中<br><br>⚠️ 由于 5-6 号没有做准备：<br>· 月报仍需补完<br>· 周会内容还没整理好<br>· 需要今天快速补救</div>" },
-  '2026-7-8':  { tag: '社区页原型', detail: "<span class='dm-tag'>独立站原型</span><br><b>社区页原型</b><div class='dm-section'><span class='dm-tag'>独立站</span><br>· 社区页原型设计<br>· 补全原型页面<br>晚 2-3h</div>" },
-  '2026-7-9':  { tag: '技术页原型', detail: "<span class='dm-tag'>独立站原型</span><br><b>技术页原型</b><div class='dm-section'><span class='dm-tag'>独立站</span><br>· 技术页原型设计<br>· 补全原型页面<br>晚 2-3h</div>" },
-  '2026-7-10': { tag: 'Figma 导入', detail: "<span class='dm-tag'>Figma 设计</span><br><b>Figma 导入</b><div class='dm-section'><span class='dm-tag'>独立站</span><br>· 导入 Figma<br>· 开始细节设计调整<br>晚 2-3h</div>" },
-  '2026-7-11': { tag: '细节设计+规范', detail: "<span class='dm-tag hot'>Figma 设计</span><br><b>细节设计+规范</b><div class='dm-section'><span class='dm-tag'>独立站</span><br>· 细节设计调整<br>· 设计规范 / 前端规范<br>上午集中 4-5h</div>" },
-  '2026-7-12': { tag: '汇报准备', detail: "<span class='dm-tag hot'>汇报准备</span><br><b>汇报材料</b><div class='dm-section'><span class='dm-tag'>独立站</span><br>· 设计规范完成<br>· 汇报 PPT 准备<br>· 7/15 汇报材料就绪</div>" },
-  '2026-7-13': { tag: '最终调整', detail: "<span class='dm-tag'>最终调整</span><br><b>最终检查</b><div class='dm-section'><span class='dm-tag'>独立站</span><br>· 最终细节调整<br>· 确认汇报材料</div>" },
-  '2026-7-14': { tag: '汇报准备', detail: "<span class='dm-tag hot'>汇报日前夕</span><br><b>7/15 汇报准备</b><div class='dm-section'><span class='dm-tag'>独立站</span><br>· 最后确认<br>· 准备 7/15 正式汇报</div>" },
-  '2026-7-15': { tag: '独立站月中汇报', detail: "<span class='dm-tag hot'>月中汇报</span><br><b>独立站月中汇报</b><div class='dm-section'><span class='dm-tag'>独立站</span><br>· Phase 2 中期进展汇报<br>· 网站功能制作半程总结</div>" },
+    '2026-7-8': { tag: '月报硬 Deadline · 晚上必成', detail: "<span class='dm-tag hot'>HARD DEADLINE</span><br><b>月报必须完成</b><div class='dm-section'><span class='dm-tag'>月报</span><br>· 原计划 7/3，已经过期 5 天<br>· 晚上 8 点到 12 点强制做完<br>· 这是最后的机会！<br><br>⚠️ <b>下班做不完，下班后继续做，今晚必成！</b></div>" },
+  '2026-7-9': { tag: '演唱会 · 放松调整心态', detail: "<span class='dm-tag ok'>放松日</span><br><b>演唱会放松</b><div class='dm-section'><span class='dm-tag'>演唱会</span><br>· 周四晚上看演唱会<br>· 用来放松和调整心态<br>· 为后续冲刺做准备</div>" },
+  '2026-7-10': { tag: '周末冲刺 Day1 · 绝无游戏', detail: "<span class='dm-tag hot'>冲刺开始</span><br><b>周末冲刺 · 绝无游戏</b><div class='dm-section'><span class='dm-tag'>冲刺计划</span><br>· 周五、周六、周日 3 天集中处理<br>· <b>绝对不打游戏！</b><br>· 一个月戒掉游戏的起点<br><br>任务清单：<br>· 10 号前：找好一篇文章、定好研究方向<br>· 作品集快速推进<br>· 独立站原型补全</div>" },
+  '2026-7-11': { tag: '周末冲刺 Day2 · 绝无游戏', detail: "<span class='dm-tag hot'>冲刺继续</span><br><b>周末冲刺 Day 2</b><div class='dm-section'><span class='dm-tag'>冲刺</span><br>· 全力推进各项工作<br>· 文献查找 + 方向确认<br>· 作品集视觉定稿开始<br>· 独立站设计细节调整</div>" },
+  '2026-7-12': { tag: '周末冲刺 Day3 · 作品集第一部分完成', detail: "<span class='dm-tag hot'>阶段完成</span><br><b>作品集第一部分完成</b><div class='dm-section'><span class='dm-tag'>作品集</span><br>· 微信项目 10 页完整版完成<br>· PDF 导出准备<br>· 周一交给陈老师审核<br><br>进度总结：<br>· 从 6/27 到 7/12 完成第一个大项目<br>· 说明了可以坚持的潜力<br>· 继续加油！</div>" },
+  '2026-7-13': { tag: '作品集沟通#6 · 微信项目完结', detail: "<span class='dm-tag done'>✓ 完成</span><br><b>作品集沟通 #6</b><div class='dm-section'><span class='dm-tag'>作品集</span><br>· 微信项目完整版提交<br>· 10 页图文 + 视觉定稿<br>· 陈老师审核反馈<br>· 微信项目第一阶段完结</div>" },
+  '2026-7-14': { tag: '短暂休整 · 准备 kucion', detail: "<span class='dm-tag'>过渡日</span><br><b>短暂休整</b><div class='dm-section'><span class='dm-tag'>休整</span><br>· 13 号交完微信，短暂休息<br>· 准备 kucion 项目<br>· 为 15 号汇报做最后准备</div>" },
+  '2026-7-15': { tag: '独立站月中汇报 · Phase 2 中期', detail: "<span class='dm-tag hot'>关键汇报</span><br><b>独立站月中汇报</b><div class='dm-section'><span class='dm-tag'>汇报</span><br>· Phase 2 中期进展汇报<br>· 展示网站功能制作进度<br>· 与客户 / 刘老师沟通反馈</div>" },
 };
 
 // ─── 两周日历：自动渲染 ───────────────────────────────────────────
