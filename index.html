@@ -1125,23 +1125,24 @@ details > summary + * { margin-top: 16px; }
       </div>
     </div>
 
-    <!-- 卡片 3：考研培训 -->
-    <div class="card" data-priority="2" data-card-id="kaoyan">
+
+    <!-- 卡片 3：转正答辩 -->
+    <div class="card" data-priority="1" data-card-id="promotion">
       <div class="card-top">
         <div>
-          <div class="card-title">考研培训</div>
-          <div class="card-meta">徐哥课程 · 课件制作</div>
+          <div class="card-title">转正答辩</div>
+          <div class="card-meta">工作总结 · 领导沟通 · 正式答辩</div>
         </div>
-        <span class="chip chip-ok">已完成</span>
+        <span class="chip chip-warn">筹备中</span>
       </div>
       <div class="card-hr"></div>
       <div class="card-status">
-        <span class="cs-label">DONE</span>课件已完成 · 7/2 交给徐哥
+        <span class="cs-label">PREP</span>月报完成后开始总结沉淀 · 联系领导约谈
       </div>
-      <div class="prog-wrap"><div class="prog-fill" style="width:100%"></div></div>
+      <div class="prog-wrap"><div class="prog-fill" style="width:10%"></div></div>
       <div class="card-footer mt8">
-        <span>课件完成 · Deadline 已过</span>
-        <span class="card-deadline">7 / 2</span>
+        <span>月报→总结沉淀→领导沟通→答辩材料</span>
+        <span class="card-deadline">8 / 6</span>
       </div>
     </div>
 
@@ -1230,25 +1231,8 @@ details > summary + * { margin-top: 16px; }
     </thead>
     <tbody>
 
-      <!-- ── 今天 ── -->
-      <tr class="ms-group-header"><td colspan="5">今天 · 7/4</td></tr>
-      <tr>
-        <td>7/8</td>
-        <td>上课日</td>
-        <td>—</td>
-        <td>上午 2 点：服务设计第二课 · 晚上 7 点：艺术与科技课</td>
-        <td><span class="chip chip-hot">今天</span></td>
-      </tr>
-
       <!-- ── 即将到期 ── -->
       <tr class="ms-group-header"><td colspan="5">即将到期</td></tr>
-      <tr class="row-hot">
-        <td>7/7</td>
-        <td>周会 AI 展示</td>
-        <td>团队</td>
-        <td>AI 探索展示 · 展示小发明或业务相关内容</td>
-        <td></td>
-      </tr>
       <tr>
         <td>7/9</td>
         <td>作品集沟通 #5</td>
@@ -1256,7 +1240,7 @@ details > summary + * { margin-top: 16px; }
         <td>展示前 8 页视觉稿 · 全局风格统一</td>
         <td></td>
       </tr>
-      <tr class="row-hot">
+      <tr>
         <td>7/15</td>
         <td>独立站月中汇报</td>
         <td>客户</td>
@@ -1476,6 +1460,13 @@ details > summary + * { margin-top: 16px; }
           <td>课件完成 · 已交给徐哥</td>
           <td><span class="chip chip-done">✓</span></td>
         </tr>
+        <tr class="row-past">
+          <td>7/7</td>
+          <td>周会 AI 展示</td>
+          <td>团队</td>
+          <td>AI 探索展示 · 已完成</td>
+          <td><span class="chip chip-done">✓</span></td>
+        </tr>
       </tbody>
     </table>
     </div>
@@ -1646,12 +1637,6 @@ details > summary + * { margin-top: 16px; }
       </div>
     </li>
     <li class="risk-item">
-      <div class="risk-bar mid"></div>
-      <div class="risk-text">
-    <li class="risk-item">
-      <div class="risk-bar mid"></div>
-      <div class="risk-text">
-    <li class="risk-item">
       <div class="risk-bar low"></div>
       <div class="risk-text">
         <div class="risk-name">独立站新增两页 · 工作量增加</div>
@@ -1742,23 +1727,33 @@ const cardDetails = {
         <div class="cm-section-text"><b>今晚 (7/8)：</b>月报必须完成<br><b>本周末 (7/10-12)：</b>整理工作总结 · 思考答辩内容<br><b>8月初：</b>答辩材料制作 · 领导沟通</div>
       </div>`
   },
-  kaoyan: {
-    title: '考研培训',
-    meta: '徐哥课程 · 课件制作',
-    chip: '已完成', chipCls: 'chip-ok',
+  promotion: {
+    title: '转正答辩',
+    meta: '工作总结 · 领导沟通 · 正式答辩',
+    chip: '筹备中', chipCls: 'chip-warn',
     body: `
       <div class="cm-section">
-        <div class="cm-section-label">状态</div>
-        <div class="cm-section-text">✅ 课件已完成 · 7/2 交给徐哥</div>
+        <div class="cm-section-label">核心思路</div>
+        <div class="cm-section-text">月报完成 → 总结沉淀 → 与两位领导沟通 → 答辩材料 → 正式答辩<br><br>不仅是展示工作，而是对自己定位、对公司理解、对未来规划的全面梳理。</div>
+      </div>
+      <div class="cm-section">
+        <div class="cm-section-label">准备节点</div>
+        <div class="cm-nodes">
+          <div class="cm-node hot"><span class="cm-node-date">7/8</span><span class="cm-node-text">月报完成（基础材料 · 今晚必成）</span></div>
+          <div class="cm-node"><span class="cm-node-date">7/9–8/5</span><span class="cm-node-text">总结沉淀：工作心得 · 学习收获 · 职业规划</span></div>
+          <div class="cm-node"><span class="cm-node-date">8/1–8/5</span><span class="cm-node-text">答辩材料制作（月报 + 作品集 + 个人总结）</span></div>
+          <div class="cm-node"><span class="cm-node-date">8/6 前</span><span class="cm-node-text">与两位领导各沟通一次 · 听取想法</span></div>
+          <div class="cm-node"><span class="cm-node-date">8/6</span><span class="cm-node-text">正式答辩</span></div>
+        </div>
       </div>
       <div class="cm-section">
         <div class="cm-section-label">进度</div>
-        <div class="cm-prog-wrap"><div class="cm-prog-fill" style="width:100%"></div></div>
-        <div class="cm-prog-label">100% · 已完成</div>
+        <div class="cm-prog-wrap"><div class="cm-prog-fill" style="width:10%"></div></div>
+        <div class="cm-prog-label">10% · 月报冲刺中 · 筹备启动</div>
       </div>
       <div class="cm-section">
-        <div class="cm-section-label">下一步</div>
-        <div class="cm-section-text">暂无，等待徐哥反馈</div>
+        <div class="cm-section-label">材料复用策略</div>
+        <div class="cm-section-text">微信工作内容 → 月报 + 作品集 + 答辩材料 · 三块高度重合，做一次用多遍</div>
       </div>`
   },
   thesis: {
@@ -1826,7 +1821,7 @@ const DAY_DATA = {
   '2026-7-4':  { tag: '上课全天 · 服务设计+艺术与科技', detail: "<span class='dm-tag done'>已完成</span><br><b>全天上课</b><div class='dm-section'>【上午 2 点】服务设计课（第二课）<br>【晚上 7 点】艺术与科技课<br><br>✓ 课程完成</div>" },
   '2026-7-5':  { tag: '休息日 · 打了一天游戏', detail: "<span class='dm-tag done'>已完成</span><br><b>游戏整天</b><div class='dm-section'><span class='dm-tag warn'>上瘾警告：打了一整天游戏</span><br>· 课后太累，想补精力<br>· 原计划：月报 + 周会准备<br>· 实际：全天游戏<br><br>⚠️ 没有完成：<br>· 月报仍未补完（原 7/3 截止已过）<br>· 周会 AI 展示准备完全没启动<br><br>✓ 反思：计划被破坏，需要强制约束</div>" },
   '2026-7-6':  { tag: '工作+游戏 · 晚上打了一整晚游戏', detail: "<span class='dm-tag done'>已完成</span><br><b>工作日 + 玩耍</b><div class='dm-section'><span class='dm-tag ok'>✓ 上班</span><br>正常工作，没有问题</div><div class='dm-section'><span class='dm-tag warn'>⚠️ 晚上打游戏</span><br>· 本来计划：作品集沟通 #4<br>· 实际：晚上打了一整晚游戏<br>· 没有做实质性工作<br><br>深刻反思：<br>· 千万别单排！真的上瘾了<br>· 昨天 5 号全天，今天又晚上<br>· 这不能继续了<br>· 必须立刻改变这个习惯<br>· 晚间要做有价值的工作，不是虚耗</div>" },
-  '2026-7-7':  { tag: '今天 · 周会 AI 展示', detail: "<span class='dm-tag hot'>今天 · 周二周会</span><br><b>周会 AI 展示</b><div class='dm-section'><span class='dm-tag'>周会</span><br>· AI 探索展示<br>· 展示内容还在准备中<br><br>⚠️ 由于 5-6 号没有做准备：<br>· 月报仍需补完<br>· 周会内容还没整理好<br>· 需要今天快速补救</div>" },
+  '2026-7-7':  { tag: '周会 AI 展示 · 已完成', detail: "<span class='dm-tag done'>✓ 已完成</span><br><b>周会 AI 展示</b><div class='dm-section'><span class='dm-tag'>周会</span><br>· AI 探索展示 · 已完成<br>· 周会是个段落，完结了</div>" },
     '2026-7-8': { tag: '月报硬 Deadline · 晚上必成', detail: "<span class='dm-tag hot'>HARD DEADLINE</span><br><b>月报必须完成</b><div class='dm-section'><span class='dm-tag'>月报</span><br>· 原计划 7/3，已经过期 5 天<br>· 晚上 8 点到 12 点强制做完<br>· 这是最后的机会！<br><br>⚠️ <b>下班做不完，下班后继续做，今晚必成！</b></div>" },
   '2026-7-9': { tag: '演唱会 · 放松调整心态', detail: "<span class='dm-tag ok'>放松日</span><br><b>演唱会放松</b><div class='dm-section'><span class='dm-tag'>演唱会</span><br>· 周四晚上看演唱会<br>· 用来放松和调整心态<br>· 为后续冲刺做准备</div>" },
   '2026-7-10': { tag: '周末冲刺 Day1 · 绝无游戏', detail: "<span class='dm-tag hot'>冲刺开始</span><br><b>周末冲刺 · 绝无游戏</b><div class='dm-section'><span class='dm-tag'>冲刺计划</span><br>· 周五、周六、周日 3 天集中处理<br>· <b>绝对不打游戏！</b><br>· 一个月戒掉游戏的起点<br><br>任务清单：<br>· 10 号前：找好一篇文章、定好研究方向<br>· 作品集快速推进<br>· 独立站原型补全</div>" },
