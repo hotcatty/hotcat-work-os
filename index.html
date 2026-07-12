@@ -1888,18 +1888,37 @@ const DAY_DATA = {
   const numEl = document.getElementById('banner-num');
   if (numEl) numEl.textContent = `${m}/${d}`;
 
-  // 主标题行：从 DAY_DATA 的 tag 字段提取，或显示默认文本
+  // 主标题行：tag 作主标题，从 detail 提取 · 条目作任务列表
   const titleEl = document.getElementById('banner-title');
   if (titleEl) {
     if (entry && entry.tag) {
-      // tag 可能含有「·」分隔的多段，拆成主标题 + 副标题
-      const parts = entry.tag.split('·').map(s => s.trim());
-      const main = parts[0] || entry.tag;
-      const sub = parts.slice(1).join(' · ');
+      // 主标题：tag 的第一段（· 前面的部分）
+      const tagParts = entry.tag.split('·').map(s => s.trim());
+      const main = tagParts[0];
+
+      // 从 detail HTML 中提取所有「· 文字」条目
+      let tasks = [];
+      if (entry.detail) {
+        // 先剥掉 HTML 标签，只留文本
+        const stripped = entry.detail.replace(/<[^>]+>/g, ' ');
+        // 匹配「·」后面跟着的文字（去掉首尾空白，过滤空串和纯符号）
+        const matches = stripped.match(/·\s*([^\n·⚠✓💡<]{2,30})/g) || [];
+        tasks = matches
+          .map(m => m.replace(/^·\s*/, '').trim())
+          .filter(t => t.length > 1 && !/^[^\u4e00-\u9fa5a-zA-Z0-9]+$/.test(t))
+          .slice(0, 5); // 最多展示 5 条，避免 banner 太长
+      }
+
+      // 拼接任务列表：用「·」间隔，一行显示
+      const taskLine = tasks.length
+        ? tasks.map(t => `· ${t}`).join('  ')
+        : (tagParts.slice(1).join(' · ') || '');
+
       titleEl.innerHTML = `今天：${main}` +
-        (sub ? `<br><span style="font-weight:400;color:rgba(255,255,255,0.6);font-size:12px;">${sub}</span>` : '');
+        (taskLine
+          ? `<br><span style="font-weight:400;color:rgba(255,255,255,0.6);font-size:12px;letter-spacing:0.01em;">${taskLine}</span>`
+          : '');
     } else {
-      // 没有 DAY_DATA 条目时，显示简洁的日期信息
       titleEl.innerHTML = `今天：${m}/${d} ${w}<br><span style="font-weight:400;color:rgba(255,255,255,0.6);font-size:12px;">暂无特别安排 · 专注推进当前任务</span>`;
     }
   }
