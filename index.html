@@ -1069,16 +1069,13 @@ details > summary + * { margin-top: 16px; }
     </div>
   </header>
 
-  <!-- ─── TODAY BANNER ─── -->
-  <div style="background:var(--black);padding:16px 20px;margin-bottom:32px;display:flex;justify-content:space-between;align-items:center;">
+  <!-- ─── TODAY BANNER (动态渲染，自动读取当日日期和 DAY_DATA) ─── -->
+  <div id="today-banner" style="background:var(--black);padding:16px 20px;margin-bottom:32px;display:flex;justify-content:space-between;align-items:center;">
     <div>
-      <div style="font-family:var(--f-en);font-size:10px;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-bottom:4px;">TODAY'S FOCUS · 7/13 周日</div>
-      <div style="font-size:13px;font-weight:700;color:var(--white);line-height:1.6;">
-        今天：把月报做完 · 交陈老师<br>
-        <span style="font-weight:400;color:rgba(255,255,255,0.6);font-size:12px;">需要在晚上完成月报，不能再拖了 · 这是硬 Deadline</span>
-      </div>
+      <div id="banner-label" style="font-family:var(--f-en);font-size:10px;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-bottom:4px;">TODAY'S FOCUS · —</div>
+      <div id="banner-title" style="font-size:13px;font-weight:700;color:var(--white);line-height:1.6;">加载中...</div>
     </div>
-    <div style="font-family:var(--f-en);font-size:32px;font-weight:900;color:rgba(255,255,255,0.15);letter-spacing:-0.04em;">7/8</div>
+    <div id="banner-num" style="font-family:var(--f-en);font-size:32px;font-weight:900;color:rgba(255,255,255,0.15);letter-spacing:-0.04em;">—</div>
   </div>
 
   <!-- ─── SECTION 1: 事项总览 ─── -->
@@ -1870,6 +1867,43 @@ const DAY_DATA = {
   '2026-7-18': { tag: '漂流玩 · kucion 大改思路理清', detail: "<span class='dm-tag ok'>放松日</span><br><b>18 号：上午漂流 · 下午开始 kucion 改</b><div class='dm-section'><span class='dm-tag'>漂流</span><br>· 上午去漂流玩<br>· 调节身心<br><br>⚠️ <b>kucion 难题</b><br>· 都不太愿意改，但按陈老师意思还得大改<br>· 思路也得重新理<br>· 下午开始深度思考 kucion 的改动方向<br>· 这会是比较难搞的事</div>" },
   '2026-7-19': { tag: '回来上网 · 毕设启动思考', detail: "<span class='dm-tag ok'>关键思考日</span><br><b>19 号：回来 + 毕设启动架构设计</b><div class='dm-section'><span class='dm-tag'>毕设启动</span><br>· 必须想一下毕设是什么样的形态<br>· 最基本的 UI · 最基本的结构<br>· 要有一个概念了<br><br>· 前置工作（文献等）暂时不动<br>· 但必须启动架构思考<br><br>⚠️ 18 号漂流玩完，19 号想上网<br>· 19 号有其他事也不好说<br>· 基本上围绕作品集 + 毕设架构思考</div>" },
   '2026-7-20': { tag: '独立站进度启动期', detail: "<span class='dm-tag hot'>新阶段启动</span><br><b>20-26 号：独立站设计推进期</b><div class='dm-section'><span class='dm-tag'>策略</span><br>· 主动联系独立站那边的设计进度<br>· 20-26 号拿一个本月比较的进展<br>· 必须拿住，不能拖到堆到月底<br>· 月底沟通会很被动<br><br>目标：<br>· 至少 1 次月中反馈<br>· 设计进度清晰（20-26 号）<br>· 为 7/31 月末汇报做准备</div>" },};
+
+// ─── TODAY BANNER：自动从当前日期 + DAY_DATA 渲染 ─────────────────
+(function renderTodayBanner() {
+  const CN_WEEK = ['周日','周一','周二','周三','周四','周五','周六'];
+  const now = new Date();
+  const m = now.getMonth() + 1;
+  const d = now.getDate();
+  const w = CN_WEEK[now.getDay()];
+
+  // 从 DAY_DATA 中提取今天的内容
+  const key = `${now.getFullYear()}-${m}-${d}`;
+  const entry = DAY_DATA[key];
+
+  // 标签行：TODAY'S FOCUS · M/D 周X
+  const labelEl = document.getElementById('banner-label');
+  if (labelEl) labelEl.textContent = `TODAY'S FOCUS · ${m}/${d} ${w}`;
+
+  // 大数字（右侧装饰）
+  const numEl = document.getElementById('banner-num');
+  if (numEl) numEl.textContent = `${m}/${d}`;
+
+  // 主标题行：从 DAY_DATA 的 tag 字段提取，或显示默认文本
+  const titleEl = document.getElementById('banner-title');
+  if (titleEl) {
+    if (entry && entry.tag) {
+      // tag 可能含有「·」分隔的多段，拆成主标题 + 副标题
+      const parts = entry.tag.split('·').map(s => s.trim());
+      const main = parts[0] || entry.tag;
+      const sub = parts.slice(1).join(' · ');
+      titleEl.innerHTML = `今天：${main}` +
+        (sub ? `<br><span style="font-weight:400;color:rgba(255,255,255,0.6);font-size:12px;">${sub}</span>` : '');
+    } else {
+      // 没有 DAY_DATA 条目时，显示简洁的日期信息
+      titleEl.innerHTML = `今天：${m}/${d} ${w}<br><span style="font-weight:400;color:rgba(255,255,255,0.6);font-size:12px;">暂无特别安排 · 专注推进当前任务</span>`;
+    }
+  }
+})();
 
 // ─── 两周日历：自动渲染 ───────────────────────────────────────────
 (function renderCalendar() {
