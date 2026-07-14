@@ -2026,6 +2026,71 @@ document.addEventListener('keydown', (e) => {
     closeCardModal();
   }
 });
+
+// ─── 节点表自动归档：过期行自动移入「已完结事项」────────────────────
+(function autoArchiveMilestones() {
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+  const year = today.getFullYear();
+
+  // 找到「已完结事项」里的 <tbody>
+  const doneDetails = document.querySelector('details');
+  if (!doneDetails) return;
+  const doneTbody = doneDetails.querySelector('table tbody');
+  if (!doneTbody) return;
+
+  // 找到节点主表（第一个 .ms-table 的 tbody）
+  const mainTable = document.querySelector('.ms-table-wrap .ms-table');
+  if (!mainTable) return;
+  const mainTbody = mainTable.querySelector('tbody');
+  if (!mainTbody) return;
+
+  // 遍历主表所有数据行（跳过 ms-group-header 分组行）
+  const rows = Array.from(mainTbody.querySelectorAll('tr:not(.ms-group-header)'));
+  const toArchive = [];
+
+  rows.forEach(row => {
+    const dateCell = row.cells[0];
+    if (!dateCell) return;
+    const raw = dateCell.textContent.trim(); // 格式：M/D 或 MM/DD
+    const parts = raw.split('/');
+    if (parts.length !== 2) return;
+    const m = parseInt(parts[0], 10);
+    const d = parseInt(parts[1], 10);
+    if (isNaN(m) || isNaN(d)) return;
+
+    // 构造该行日期（年份取当年，跨年再说）
+    const rowDate = new Date(year, m - 1, d);
+    if (rowDate < today) {
+      toArchive.push(row);
+    }
+  });
+
+  if (toArchive.length === 0) return;
+
+  // 移动：从主表删除，插入已完结表头部（最新的放在最前）
+  toArchive.reverse().forEach(row => {
+    // 添加 row-past 样式（灰色）并在最后一列加 ✓ chip
+    row.classList.add('row-past');
+    const lastCell = row.cells[row.cells.length - 1];
+    if (lastCell && !lastCell.querySelector('.chip-done')) {
+      lastCell.innerHTML = '<span class="chip chip-done">✓</span>';
+    }
+    // 从主表移走，插到已完结 tbody 最前面
+    row.parentNode.removeChild(row);
+    doneTbody.insertBefore(row, doneTbody.firstChild);
+  });
+
+  // 移除主表中可能出现的空分组（「即将到期」标题下没有子行的情况）
+  const groupHeaders = Array.from(mainTbody.querySelectorAll('.ms-group-header'));
+  groupHeaders.forEach(header => {
+    // 找下一个兄弟节点，如果是下一个 group-header 或末尾，则此组为空
+    let next = header.nextElementSibling;
+    if (!next || next.classList.contains('ms-group-header')) {
+      header.parentNode.removeChild(header);
+    }
+  });
+})();
 </script>
 </body>
 </html>
